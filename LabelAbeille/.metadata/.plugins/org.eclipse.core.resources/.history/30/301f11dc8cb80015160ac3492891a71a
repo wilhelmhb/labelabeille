@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>[GoogleMaps API V3] Insertion d'une Carte</title>
+    <style>
+      #div_carte {
+        height : 600px; /* IMPERATIF */
+        width : 600px;
+        margin : auto;
+        border : 1px solid #888;
+      }
+    </style>
+    <script type="text/javascript" src="js/carte.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+  </head>
+  <body onload="creer_carte(document.getElementById(div_carte), (40.00, 45.00), 6);">
+    <div id="div_carte"></div>
+  </body>
+</html>

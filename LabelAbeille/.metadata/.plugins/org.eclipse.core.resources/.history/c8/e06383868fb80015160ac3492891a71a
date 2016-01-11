@@ -1,0 +1,46 @@
+infobulle = new google.maps.InfoWindow({
+    'position' : new google.maps.LatLng(0,0),           // position d'ancrage de l'InfoWondow sur la carte
+    'content'  : '', // contenu qui sera affiché
+    'visible': false,
+  });
+/*
+ * crée une carte dans l'élément element, 
+ * centrée sur la position position (x,y)
+ * avec le zoom zoom
+ * Roadmap = itinéraire
+ */
+function creer_carte(element, position, zoom) {
+  map = new google.maps.Map(element, {
+        zoom: zoom,
+        center: new google.maps.LatLng(position),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });   
+};
+/*
+ * crée un marqueur à la position position (x,y)
+ * sur la carte map
+ * le marqueur est l'image icon
+ * 		définie par son url
+ * 		et sa taille (largeur, hauteur)
+ * au clic, on affiche l'infobulle associée
+ */
+function creer_pointeur(map, position) {
+	var largeur;
+	var hauteur;
+	var marker = new google.maps.Marker({
+		  position: new google.maps.LatLng(position), 
+		  map: map,
+		  icon : {url: '', size:new google.maps.Size(largeur, hauteur)},
+		  
+		}); 
+	google.maps.event.addListener(marker, 'click', function(data){
+	    // affichage position du marker
+	    infobulle.setContent(contenu(marker));
+	    infobulle.setPosition(position);
+	    infobulle.setVisible(true);
+	    infobulle.open(map, marker);
+	  }); 
+};
+function ajuster_taille() {
+	
+};

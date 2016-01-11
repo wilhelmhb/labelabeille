@@ -1,0 +1,9 @@
+function recuperer_donnees(utilisateur) {
+	/* envoi_requete est une fonction d'AJAX 
+	 * qui envoie une requete à page_traitement 
+	 * avec les données donnees
+	 */
+	envoi_requete(page_traitement, donnees, function(response) {
+		return response;
+	});
+}

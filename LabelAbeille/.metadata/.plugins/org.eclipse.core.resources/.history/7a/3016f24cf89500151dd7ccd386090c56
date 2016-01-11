@@ -1,0 +1,24 @@
+function creer_carte(element, position, zoom) {
+  map = new google.maps.Map(element, {
+        zoom: zoom,
+        center: new google.maps.LatLng(position),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });   
+};
+function creer_pointeur(position) {
+	var marker = new google.maps.Marker({
+		  position: new google.maps.LatLng(position), 
+		  map: map,
+		  icon : {url: '', size:''},
+		  
+		}); 
+};
+function creer_infobulle(marqueur) {
+	var infobulle = new google.maps.InfoWindow({
+	    'position' : new google.maps.LatLng(marqueur.position),           // position d'ancrage de l'InfoWondow sur la carte
+	    'content'  : contenu(marqueur) // contenu qui sera affiché
+	  });
+};
+function ajuster_taille() {
+	
+};
