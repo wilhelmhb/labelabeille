@@ -1,5 +1,5 @@
 infobulle = new google.maps.InfoWindow({
-    'position' : new google.maps.LatLng(0,0),           // position d'ancrage de l'InfoWondow sur la carte
+    'position' : new google.maps.LatLng(0,0),           // position d'ancrage de l'InfoWindow sur la carte
     'content'  : '', // contenu qui sera affiché
     'visible': false,
   });
@@ -42,8 +42,22 @@ function creer_pointeur(map, lat, long) {
 	  }); 
 };
 function ajuster_taille() {
-	
+	//TODO : créer une fonction permettant d'ajuster le zoom aux points placés sur la carte
 };
+function calculer_tracer_itineraire(origine, destination) {
+	var request = {
+            'origin'      : origine,
+            'destination' : destination,
+            'travelMode'  : google.maps.DirectionsTravelMode.DRIVING // Type de transport
+        }
+        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+        directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+            if(status == google.maps.DirectionsStatus.OK){
+                direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+            }
+        });
+}
+
   // init lorsque la page est chargée
  google.maps.event.addDomListener( window, 'load', function(){
 	 creer_carte(document.getElementById("div_carte"), 46.80, 1.70, 6);
