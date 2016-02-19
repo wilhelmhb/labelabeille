@@ -1,7 +1,0 @@
-function creer_carte() {
-  map = new google.maps.Map(document.getElementById("map_canvas"), {
-        zoom: n,
-        center: new google.maps.LatLng(position),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });   
-} 
