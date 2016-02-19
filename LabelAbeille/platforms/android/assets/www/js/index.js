@@ -1,33 +1,38 @@
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+function _(el) {
+	return document.getElementById(el);
+}
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+if(window.addEventListener){
+    window.addEventListener('load', debut, false);
+}else{
+    window.attachEvent('onload', debut);
+}
+var checkb=new Array();
 
-        console.log('Received Event: ' + id);
-    }
-};
+function debut(){
+	organiserRuches(7);
+	//_("check1").addEventListener("click", function(){check(1);});
+	//checkb[1]=true;
+}
 
-app.initialize();
+function organiserRuches(nbRuches){
+	h=_("ruche1").offsetHeight;
+	w=_("ruche1").offsetWidth;
+	for(i=2; i<=nbRuches; i++){
+		console.log(_("ruche"+i));
+		_("ruche"+i).style.top=h*(0.76*(i-1))+'px';
+		_("ruche"+i).style.left=w*(0.5*((i%2==0)?1:0))+'px';
+	}
+	
+}
+
+function check(n){
+	if(checkb[n]){
+		_("check"+n).src="img/off.png";
+		checkb[n]=false;
+	}
+	else {
+		 _("check"+n).src="img/on.png";	
+		 checkb[n]=true;
+	 }
+}

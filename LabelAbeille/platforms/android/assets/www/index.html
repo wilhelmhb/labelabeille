@@ -1,23 +1,208 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>[GoogleMaps API V3] Insertion d'une Carte</title>
-    <style>
-      #div_carte {
-        height : 100%; 
-        min-height : 300px;
-        width : 100%;
-        margin : auto;
-        border : 1px solid #888;
-      }
-    </style>
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <script src="js/carte.js"></script>
-  </head>
-  <body>
-    <h1>Titre de la carte</h1>
-    <div id="div_carte"></div>
-  </body>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="css/opensans.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/form.css" type="text/css" charset="utf-8" />
+		 <link rel="stylesheet" href="css/accueil.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/parametres.css" type="text/css" charset="utf-8" />
+        <title>Label Abeille</title>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+    </head>
+    <body>
+		
+		<div id="bd">
+			<div id="boite">
+				Mauvais identifiant ou mot de passe
+				<div class="bouton"><p></p><span>REESSAYER</span></div>
+			</div>
+		</div>
+        <div id="entete1">
+            <img src="img/logo.png" alt="Label Abeille" />
+        </div>
+		
+		
+		<div id="corps1">
+				<img src="img/alveoles.png" alt="Fond Alveoles" id="alveoles_chargement">
+				<canvas class="can" id="canvasProgressSimple"></canvas>
+				<div id="status"></div>
+			</div>
+		</div>
+			
+			
+        <div id="entete1">
+            <img src="img/logo.png" alt="Label Abeille" />
+        </div>
+		<div id="corps1" class="fond_gris">
+			<div id="haut_connexion">
+				<div></div>
+			</div>
+			<div id="connexion">
+				<div id="connexion_contenu">
+					<h1>CONNEXION</h1>
+					<div class="sizing"></div>
+					
+					<form>
+						<input class="zone_texte" type="text" name="email" value="Adresse e-mail" />
+						<input class="zone_texte" type="password" name="mdp" value="Mot de passe" />
+						<div class="bouton"><p></p><span>VALIDER</span></div>
+					</form>
+					<div style="clear:left;"></div>
+				</div>
+				<div id="liens1">
+					<img alt="Site Mobile" src="img/liens/sitem.png" />
+					<img alt="F.A.Q." src="img/liens/faq.png" />
+				</div>
+				<div id="liens2">
+					<img alt="Facebook" src="img/liens/fb.png" />
+					<img alt="Twitter" src="img/liens/twitter.png" />
+					<img alt="Google plus" src="img/liens/google.png" />
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="menu_haut">
+			<a href="#"><img src="img/carte.png" alt="Carte" /></a>
+			<a href="#"><img src="img/historique.png" alt="Historique" /></a>
+			<a href="#"><img class="droite" src="img/reglages.png" alt="Réglages" /></a>
+		</div>
+			
+			
+		<div id="corps_accueil">
+			<div id="sous_titre">
+				<span id="nav_gauche"></span>
+				<span id="nav_droite"></span>
+				<h1>Rucher 2</h1>
+				<div style="clear:both;"></div>
+			</div>
+			<div id="bas_defilement_gris"></div>
+			<div id="ruches">
+			<script id="ruche">
+				{{#ruches}}
+				<div id="ruche{{@index}}" class="ruche_grise">
+					<div class="sizing"></div>
+					<h2>[2.1]</h2>
+					<h1>{{ nom }}</h1>
+					<div style="clear:left;"></div>
+				</div>
+				{{\ruches}}
+			</script>
+				
+			</div>
+		</div>
+			
+			
+			<div id="menu_haut">
+				<a href="#"><img class="retour" src="img/retour.png" alt="Retour" /></a>
+				<h1>Param&egrave;tres</h1>
+			</div>
+			<div id="bas_defilement"></div>
+			<div id="bas_triangle"></div>
+			<div id="corps">
+				<div id="sous_titre">
+					<span id="nav_gauche"><</span>
+					<span id="nav_droite">></span>
+					<h1>Ruchers</h1>
+				</div>
+				<div id="contenu" class="formulaire">
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
+				
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<div class="bouton"><p></p><span>CREER</span></div>
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				</div>
+			</div>
+				
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/chargement.js"></script>
+    </body>
 </html>

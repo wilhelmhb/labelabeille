@@ -1,20 +1,3 @@
-function getJSON(adresse) {
-    $.ajax({
-        type: 'GET',
-        url: adresse,
-        dataType: "json",
-        success: function(data) {return data;},
-    });
-}   
-function postJSON(adresse, donnees) {
-    $.ajax({
-        type: 'POST',
-        url: adresse,
-        data: donnees,
-        dataType: "json",
-        success: function(data) {return data;},
-    });
-}   
 function checkConnection() {
     var networkState = navigator.connection.type;
 
@@ -37,44 +20,103 @@ function checkConnection() {
     }
     return true;
 }
-/* recupere toutes les donnees concernant les ruches de l'utilisateur */
-function recuperer_donnees_ruches(utilisateur) {
-    var f = "BAT,DEF.DEF_BATTERIE_MIN,DEF.DEF_BATTERIE_MOY,DEF.DEF_COM,DEF.DEF_GEO,DEF.DEF_HUM_MAX,DEF.DEF_HUM_MIN,DEF.DEF_MASSE,DEF.DEF_ORI,DEF.DEF_POIDS_TARE,DEF.DEF_TEMP_MAX,DEF.DEF_TEMP_MIN,HORODATE,HUM,LAT,LNG,LUM,MASSE,MODE,ORI,PARAM.COMMENTAIRE,PARAM.NB_ABEILLE,PARAM.NB_HAUSSE,PARAM.POIDS_ESSAIM,PARAM.POIDS_RECOLTE,PARAM.POIDS_RUCHE_VIERGE,PARAM.PROD_MIEL_HAUSSE,PARAM.PROD_MIEL_RUCHE,PARAM.SEUIL_BAISSE_POIDS,PARAM.SEUIL_BAISSE_POIDS_DUREE,PARAM.SEUIL_BATTERIE_MIN,PARAM.SEUIL_BATTERIE_MOY,PARAM.SEUIL_HUMIDITE_MAX,PARAM.SEUIL_HUMIDITE_MIN,PARAM.SEUIL_TEMP_MAX,PARAM.SEUIL_TEMP_MIN,TMP,VOL";
-    return getJSON('https://neotool.label-abeille.biz/kiwik/api?user=kiwik&pass=kiwik&method=getInfoRuche&idClient='+utilisateur+'&field='+f);
-};
-/* recupere et stocke localement toutes les donnees concernant les ruches de l'utilisateur */
-function stocker_donnees_ruches(utilisateur) {
-    sessionStorage['ruches'] = recuperer_donnees_ruches(utilisateur);
-}
-/* vérifie qu'une entrée de formulaire ne contient que des caractères autorisés, et entre 3 et 50 caractères */
-function entree_valide_js(entree) {
-    return entree.match('^[a-zA-Z0-9_]{3,50}$');
-};
-function traitement_connexion(login, mdp) {
-    if (!entree_valide_js(login)) {
-        /* afficher le message d'erreur */
-        return false;
-    }
-    else {
-        if (!entree_valide_js(mdp)) {
-            /* afficher le message d'erreur */
-            return false;
-        }
-        else {
-            return postJSON('api.label-abeille.org/login_check', '_username='+login+'&_password='+mdp);
-        }
-    };
-};
-function traitement_modification_nom(nom) {
-    if (!entree_valide_js(nom)) {
-        /* afficher le message d'erreur */
-        return false;
-    }
-    else {
-        return postJSON('api.label-abeille.org/psclient/put/', 'name='+nom);
-    }
-};
+
+
+/* non-implémenté côté serveur */
 function creer_ruche() {
-    return postJSON('api.label-abeille.org/pshive/post/', 'name='+nom+'&id_box='+box);
+    //return postJSON('api.label-abeille.org/pshive/post/', 'name='+nom+'&id_box='+box);
 }
 
+/* connexion */
+function connexion(user, passwd, success, failure) {
+        console.log(user);
+        console.log(passwd);
+        $.ajax({
+            type: 'POST',
+            url: url+'login_check',
+            //url: url+'test/connections',
+            data: '_username='+user+'&_password='+passwd,
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+            	console.log(data); 
+            	//$("#result").html(data+'');
+            	success();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log('echec');
+                console.log(xhr.responseText);
+                failure();
+                //$("#result").html(xhr.responseText);
+            }
+        });
+}
+/* récupération de la liste des ruches */
+function getListHives(action) {
+        $.ajax({
+            type: 'GET',
+            url: url+'pscustomer/hives/me',
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data); 
+                data = data.data;
+                //$("#resultat").html(JSON.stringify(data));
+                action(data);
+            },
+        });
+}
+/* récupération des données d'une ruche */
+function getDataHive(id, action) {
+        $.ajax({
+            type: 'GET',
+            url: url+'pscustomer/hives/'+id+'/me',
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+            	console.log(data); 
+            	//$("#resultat").html(JSON.stringify(data));
+            	action(data);
+            }
+        });
+};
+    
+var url = 'http://api.label-abeille.org/app.php/';
+
+/* fonction qui récupère et traite les données de connexion */
+function connect(action) {
+	$("#valider").on("click", function(){
+        var user = encodeURIComponent($("#email").val());
+        var user2 = $("#username").val();
+        console.log(user);
+        var login = encodeURIComponent($("#mdp").val());
+        var login2 = $("#password").val();
+        console.log(login);
+        connexion(user, login, connexion_success, connexion_failure);
+    });
+};
+function connexion_failure() {
+	$("#bd").setAttribute('style', "display: block;");
+}
+function connexion_success() {
+	getListHives(goToListHives);
+}
+function goToListHives(listHives) {
+	var template = $(templates).filter('ruche').html();
+	listHives = {"ruches": listHives};
+    page = Mustache.render(template, listHives);
+    document.getElementById("ruches").innerHTML = page;
+    transition("accueil", "slide");
+};
+function goToDataHives(dataHive) {
+	var template = $(templates).filter('donnees_ruche').html();
+    page = Mustache.render(template, dataHive);
+    document.getElementById("contenu").innerHTML = page;
+    transition("details", "fade");
+}
