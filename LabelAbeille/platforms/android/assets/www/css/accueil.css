@@ -1,11 +1,12 @@
-#corps_accueil{
+.corps_accueil{
 	background:url('../img/fond_gris2.png');
 	width:100%;
 	height: calc(100% - 55px);
-	background-size:100% 100%;	
+	background-size:100% 100%;
+	position:relative;
 }
 #bas_defilement_gris {
-	position:fixed;
+	position:absolute;
 	bottom:0;
 	z-index:1;
 }
@@ -32,6 +33,7 @@
 }
 .ruche_grise h1{
 	font-family:'open_sanslight';
+	font-weight:normal;
 	font-size:3.5vw;
 	color:#343434;
 	width:80%;

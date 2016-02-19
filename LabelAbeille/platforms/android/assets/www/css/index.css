@@ -4,10 +4,11 @@ html {
 body {
   	height: 100%;
 	border:none;
+	position:relative;
 }
 .fond_gris{
 	background:url('../img/fond_gris.png');
-	background-size: 100%;
+	background-size: 100% 100%;
 }
 
 .bouton{
@@ -29,10 +30,9 @@ body {
 	top:calc(50% - 14pt);
 	left:0;
 	font-family:'open_sanslight';
-	font-size:4vw;
+	font-size:15px;
 }
 #bd{
-	display:none;
 	background:rgba(0,0,0,0.7);
 	width:100%;
 	height:100%;
@@ -46,7 +46,7 @@ body {
 	max-width:1000px;
 	min-height:10%;
 	margin:auto;
-	margin-top: 50%;
+	margin-top: 30vh;
 	font-family:'open_sanslight';
 	font-size:3vw;
 	color:#343434;
@@ -69,6 +69,7 @@ body {
 	height:25px;
 	width:16px;
 }
+
 #menu_haut h1 {
 	padding:0;
 	font-size:25px;
@@ -85,7 +86,7 @@ body {
 	background-size:100% 100%;
 	height:50px;
 	position:absolute;
-	z-index:100;
+	z-index:10;
 	font-family:'open_sanslight';
 }
 #sous_titre h1 {
@@ -96,6 +97,9 @@ body {
 	margin:auto;
 	text-align:center;
 	margin-top:13px;
+}
+#sous_titre h1 span{
+	font-size:14px;
 }
 #nav_gauche{
 	float:left;
@@ -125,12 +129,12 @@ body {
 	background-image:-webkit-linear-gradient(0deg, #fcfcfc, rgba(255,255,255,0));
 	background-image:-o-linear-gradient(0deg, #fcfcfc, rgba(255,255,255,0));
 	background-image:linear-gradient(0deg, #fcfcfc, rgba(255,255,255,0));
-	position:fixed;
+	position:absolute;
 	z-index:20;
 	bottom:15%;
 }
 
-#corps{
+.corps{
 	width:100%;
 	height: calc(85% - 55px);
 	background-image:-moz-linear-gradient(0deg, #fcfcfc, #f0f0f0);
@@ -151,7 +155,20 @@ body {
 	background:url('../img/bas_triangle.png');
 	background-size:100% 100%;
 	height:15%;
-	position:fixed;
+	position:absolute;
 	bottom:0;
-	z-index:3;
+	z-index:30;
+	text-align:center;
+}
+#bas_triangle img{
+	cursor:pointer;
+	width:10%;
+	position:absolute;
+	bottom:25%;
+	left:46%;
+}
+.page{
+	position:absolute;
+	width:100%;
+	height:100%;
 }

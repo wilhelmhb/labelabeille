@@ -15,9 +15,11 @@ function dessinCercleFLAT(cible,pourcentage){
  var bg = cible;
  var ctx = bg.getContext('2d');
  // netoyage du canvas existant
- var cote = _("alveoles_chargement").width/3;
+ var w = _("alveoles_chargement").width;
+ var h = _("alveoles_chargement").offsetHeight;
+ var cote = w/3;
  _("canvasProgressSimple").width=_("canvasProgressSimple").height=cote+2;
- _("canvasProgressSimple").style.top='calc( 50% - '+(cote/2)+'px + '+ (_("entete1").offsetHeight/2 + 2)+'px)';
+ _("canvasProgressSimple").style.top=(20 + h/2 - cote/2)+'px';
  _("canvasProgressSimple").style.left='calc(50% - '+cote/2+'px)';
  ctx.clearRect ( 0 , 0 , cote , cote );
  // definition d'un cercle complet
