@@ -1,4 +1,4 @@
-#contenu h2{
+.contenu h2{
 	display:block;
 	text-align:left;
 	border-bottom:1px solid #c0c0c0;
@@ -8,7 +8,7 @@
 	padding:0 0 3px 0;
 	margin:5vh 0 5vh 0;
 }
-#contenu{
+.contenu{
 	text-align:center;
 }
 .formulaire .bouton{

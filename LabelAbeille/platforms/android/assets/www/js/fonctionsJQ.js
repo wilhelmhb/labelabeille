@@ -21,7 +21,6 @@ function checkConnection() {
     return true;
 }
 
-
 /* non-implémenté côté serveur */
 function creer_ruche() {
     //return postJSON('api.label-abeille.org/pshive/post/', 'name='+nom+'&id_box='+box);
@@ -91,13 +90,13 @@ var url = 'http://api.label-abeille.org/app.php/';
 
 /* fonction qui récupère et traite les données de connexion */
 function connect(action) {
-	$("#valider").on("click", function(){
+	$("#valider").on(evtclick, function(){
         var user = encodeURIComponent($("#email").val());
         var user2 = $("#username").val();
-        console.log(user);
+        //console.log(user);
         var login = encodeURIComponent($("#mdp").val());
         var login2 = $("#password").val();
-        console.log(login);
+        //console.log(login);
         connexion(user, login, connexion_success, connexion_failure);
     });
 };

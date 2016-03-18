@@ -1,9 +1,8 @@
 #menudetails img {
 	width:15%;
-	margin:0;
 	cursor:pointer;
 }
-#contenu .milieu {
+.contenu .milieu {
 	margin:0 20% 0 20%;
 }
 #details
@@ -26,32 +25,35 @@
 #bloc1 h1, #bloc2 h1, #bloc3 h1, #bloc4 h1{
 	font-family:'open_sanslight';
 	font-weight:bold;
-	font-size:3.5vmin;
+	font-size:13px;
 	text-align:left;
 	color:#343434;
 	border:0;
 	margin:0;
-	margin-bottom:2.2vh;
+	margin-bottom:5px;
 }
 #bloc1 h2, #bloc2 h2, #bloc3 h2, #bloc4 h2{
 	font-family:'open_sanslight';
 	font-weight:bold;
-	font-size:3vmin;
+	font-size:10px;
 	text-align:left;
 	color:#343434;
 	border:0;
 	margin:0;
 	text-decoration:none;
+    margin-bottom:5px;
+
 }
 #bloc1 p, #bloc2 p, #bloc3 p, #bloc4 p{
 	font-family:'open_sanslight';
 	font-weight:normal;
-	font-size:2.5vmin;
+	font-size:9px;
+	font-size:60%;
 	color:#343434;
 	text-indent:5px;
 	text-align:left;
 	margin:0;
-	margin-bottom:1.5vh;
+	margin-bottom:3px;
 }
 #bloc1{
 	top:15%;

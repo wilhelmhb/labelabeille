@@ -1,23 +1,209 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>[GoogleMaps API V3] Insertion d'une Carte</title>
-    <style>
-      #div_carte {
-        height : 100%; 
-        min-height : 300px;
-        width : 100%;
-        margin : auto;
-        border : 1px solid #888;
-      }
-    </style>
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <script src="js/carte.js"></script>
-  </head>
-  <body>
-    <h1>Titre de la carte</h1>
-    <div id="div_carte"></div>
-  </body>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="css/opensans.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/accueil.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/parametres.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/form.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/details.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/chargement-connexion.css" type="text/css" charset="utf-8" />
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/chargement.js"></script>
+       	<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/mustache.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
+        <title>Label Abeille</title>
+    </head>
+    <body>
+		
+		<div id="bd" style="visibility:hidden;">
+			<div id="boite">
+				<span id="messBd">Mauvais identifiant ou mot de passe</span>
+				<div id="btBd" class="bouton"><p></p><span id="btBd_txt">REESSAYER</span></div>
+			</div>
+		</div>
+		
+		<div class="page" id="pchargement">
+       		<div id="entete1">
+            	<img src="img/logo.png" alt="Label Abeille" />
+        	</div>
+			<div id="corps1">
+				<img src="img/alveoles.png" alt="Fond Alveoles" id="alveoles_chargement">
+				<canvas class="can" id="canvasProgressSimple"></canvas>
+				<div id="status"></div>
+			</div>
+		</div>	
+		
+		<div class="page" id="pconnexion" style="display:none;">
+       		<div id="entete1">
+            	<img src="img/logo.png" alt="Label Abeille" />
+        	</div>
+			<div id="corps1" class="fond_gris">
+				<div id="haut_connexion">
+					<div></div>
+				</div>
+				<div id="connexion">
+					<div id="connexion_contenu">
+						<h1>CONNEXION</h1>
+						<div class="sizing"></div>
+					
+						<form>
+							<input class="zone_texte" type="text" id="email_connexion" value="user@studio-kiwik.fr" onfocus="if(this.value=='Adresse e-mail'){this.value=''}" onblur="if(this.value==''){this.value = 'Adresse e-mail'}"/>
+							<input class="zone_texte" type="text" id="mdp_connexion" value="kiwik459" onfocus="if(this.value=='Mot de passe'){this.value='';this.type='password'}" onblur="if(this.value==''){this.value = 'Mot de passe'; this.type='text'}"/>
+							<div class="bouton" id="valider_connexion"><p></p><span>VALIDER</span></div>
+						</form>
+						<div style="clear:left;"></div>
+					</div>
+					<div id="liens1">
+						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Site Mobile" src="img/liens/sitem.png" />
+						<img onclick="window.open('http://www.label-abeille.org/faq', '_system');" alt="F.A.Q." src="img/liens/faq.png" />
+					</div>
+					<div id="liens2">
+						<img onclick="window.open('http://www.label-abeille.org', '_system');"  alt="Facebook" src="img/liens/fb.png" />
+						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Twitter" src="img/liens/twitter.png" />
+						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Google plus" src="img/liens/google.png" />
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+		<div class="page" id="paccueil" style="display:none;">
+			<div id="menu_haut">
+				<img src="img/carte.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Carte" />
+				<img src="img/historique.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Historique" />
+				<img class="droite" id="btReglages" src="img/reglages.png" alt="Réglages" />
+			</div>
+			<div id="content-accueil" class="corps_accueil">
+					
+			</div>
+		</div>
+		
+		<div class="page" id="pparametres" style="display:none;">
+			<div id="menu_haut">
+				<a href="#"><img class="retour" src="img/retour.png" alt="Retour" /></a>
+				<h1>Param&egrave;tres</h1>
+			</div>
+			<div id="bas_defilement"></div>
+			<div id="bas_triangle"></div>
+			<div class="corps">
+				<div id="sous_titre">
+					<span id="nav_gauche"><</span>
+					<span id="nav_droite">></span>
+					<h1>Ruchers</h1>
+				</div>
+				<div id="contenu" class="formulaire">
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
+				
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<div class="bouton"><p></p><span>CREER</span></div>
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<h2>Supprimer</h2>
+				<select class="liste_deroulante" name="supprimer">
+					<option>S&eacute;lectionnez un rucher</option>
+					<option>Rucher 1</option>
+					<option>Rucher 2</option>
+				</select>
+				<h2>Cr&eacute;er</h2>
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				</div>
+			</div>
+		</div>
+		<div class="page" id="pdetails" style="display:none;">
+			<div id="menu_haut">
+				<a href="#"><img class="retour" src="img/retour.png" alt="Retour" /></a>
+				<h1></h1>
+			</div>
+			<div id="bas_defilement"></div>
+			<div id="bas_triangle"><img style="opacity:0.3;filter:alpha(opacity = 0.3)"  src="img/ajouter_note.png" alt="Ajouter une note" /></div>
+			<div class="corps">
+				<div id="sous_titre">
+					<span id="nav_gauche"></span>
+					<span id="nav_droite"></span>
+					<h1>Nom de la ruche <span>[2.1]</span></h1>
+				</div>
+				<div id="details-content">
+					
+				</div>
+			</div>
+		</div>
+			
+        
+    </body>
 </html>

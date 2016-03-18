@@ -3755,7 +3755,7 @@ for ( i = 0; i < virtualEventNames.length; i++ ) {
 // Note that we require event capture support for this so if the device
 // doesn't support it, we punt for now and rely solely on mouse events.
 if ( eventCaptureSupported ) {
-	document.addEventListener( "click", function( e ) {
+	document.addEventListener( evtclick, function( e ) {
 		var cnt = clickBlockList.length,
 			target = e.target,
 			x, y, ele, i, o, touchID;
@@ -6026,7 +6026,7 @@ $.widget( "mobile.page", {
 		});
 
 		// click routing - direct to HTTP or Ajax, accordingly
-		$.mobile.document.bind( "click", function( event ) {
+		$.mobile.document.bind( evtclick, function( event ) {
 			if ( !$.mobile.linkBindingEnabled || event.isDefaultPrevented() ) {
 				return;
 			}
@@ -14428,7 +14428,7 @@ $.widget( "ui.tabs", {
 	options: {
 		active: null,
 		collapsible: false,
-		event: "click",
+		event: evtclick,
 		heightStyle: "content",
 		hide: null,
 		show: null,
