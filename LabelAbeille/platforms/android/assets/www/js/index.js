@@ -22,6 +22,7 @@ var evtclick="click";
 
 function debut(){
 	dessinCercleFLAT(_("canvasProgressSimple"),0);
+	cordova.plugins.backgroundMode.enable();
     new FastClick(document.body);
  	masquerBd();
 	slider = new PageSlider($("#container"),$(_("pchargement")));
