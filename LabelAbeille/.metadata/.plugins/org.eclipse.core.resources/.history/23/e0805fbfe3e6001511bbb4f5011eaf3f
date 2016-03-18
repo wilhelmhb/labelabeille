@@ -1,0 +1,5 @@
+package www.labelabeille.fr;
+
+public class SSLAcceptingIceCreamCordovaWebViewClient {
+
+}

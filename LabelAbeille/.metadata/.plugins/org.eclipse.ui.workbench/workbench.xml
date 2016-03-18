@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="20" version="2.0">
+<workbench progressCount="34" version="2.0">
 <workbenchAdvisor/>
-<window height="767" maximized="true" width="1018" x="65" y="24">
-<fastViewData fastViewLocation="1024"/>
+<window height="681" maximized="true" width="1006" x="65" y="24">
+<fastViewData fastViewLocation="1024">
+<orientation position="512" view="org.eclipse.ui.views.ProblemView"/>
+<orientation position="512" view="org.eclipse.ui.console.ConsoleView"/>
+<orientation position="512" view="org.eclipse.jdt.ui.SourceView"/>
+<orientation position="512" view="org.eclipse.jdt.ui.JavadocView"/>
+</fastViewData>
 <perspectiveBar>
 <itemSize x="160"/>
 </perspectiveBar>
@@ -18,12 +23,13 @@
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="88" y="30"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="40" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="232" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -40,36 +46,66 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" partName="index.html" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/index.html" title="index.html" tooltip="LabelAbeille/assets/www/index.html" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/index.html"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4554" selectionTopPixel="549"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1973" selectionTopPixel="68"/>
 </editor>
-<editor id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="fonctionsJQ.js" partName="fonctionsJQ.js" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/js/fonctionsJQ.js" title="fonctionsJQ.js" tooltip="LabelAbeille/assets/www/js/fonctionsJQ.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/js/fonctionsJQ.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4017" selectionTopPixel="0"/>
+<editor id="org.eclipse.wst.css.core.csssource.source" name="index.css" partName="index.css" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/css/index.css" title="index.css" tooltip="LabelAbeille/assets/www/css/index.css" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/css/index.css"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1654" selectionTopPixel="3382"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="carte.js" partName="carte.js" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/js/carte.js" title="carte.js" tooltip="LabelAbeille/assets/www/js/carte.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/js/carte.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1450" selectionTopPixel="67"/>
+<editor id="org.eclipse.wst.css.core.csssource.source" name="accueil.css" partName="accueil.css" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/css/accueil.css" title="accueil.css" tooltip="LabelAbeille/assets/www/css/accueil.css" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/css/accueil.css"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="564" selectionTopPixel="221"/>
+</editor>
+<editor id="org.eclipse.wst.html.core.htmlsource.source" name="templates.html" partName="templates.html" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/templates.html" title="templates.html" tooltip="LabelAbeille/assets/www/templates.html" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/templates.html"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1060" selectionTopPixel="356"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="index.js" partName="index.js" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/assets/www/js/index.js" title="index.js" tooltip="LabelAbeille/assets/www/js/index.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/assets/www/js/index.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="12976" selectionTopPixel="4165"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" partName="LabelAbeille Manifest" path="/var/www/html/labelabeille/LabelAbeille/platforms/android/AndroidManifest.xml" title="LabelAbeille Manifest" tooltip="LabelAbeille/AndroidManifest.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/LabelAbeille/AndroidManifest.xml"/>
 </editor>
 </editors>
 <views>
+<view id="com.android.ide.eclipse.ddms.views.DeviceView" partName="Devices">
+<viewState/>
+</view>
+<view id="com.android.ide.eclipse.ddms.views.ThreadView" partName="Threads">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
+<view id="com.android.ide.eclipse.ddms.views.HeapView" partName="Heap">
+<viewState/>
+</view>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView" partName="LogCat">
+<viewState/>
+</view>
+<view id="com.android.ide.eclipse.ddms.views.FileExplorerView" partName="File Explorer"/>
+<view id="com.android.ide.eclipse.ddms.views.NetworkStatsView" partName="Network Statistics">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (23 items)"/>
+<category IMemento.internal.id="Warnings (19 items)"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="205" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="525" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -109,15 +145,19 @@
 </customFilters>
 </viewState>
 </view>
-<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
-<viewState/>
-</view>
+<view id="com.android.ide.eclipse.ddms.views.SysInfoView" partName="System Information"/>
+<view id="com.android.ide.eclipse.ddms.views.EmulatorControlView" partName="Emulator Control"/>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration">
 <viewState/>
 </view>
-<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
+<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc">
+<viewState/>
+</view>
+<view id="com.android.ide.eclipse.ddms.views.AllocTrackerView" partName="Allocation Tracker">
+<viewState/>
+</view>
 </views>
-<perspectives activePart="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -153,10 +193,8 @@
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
-<fastViewBars>&#x0A;<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@7c8c856c" orientation="512" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">&#x0A;<fastViews>&#x0A;<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-</fastViewBars>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViewBars/>
 <layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
@@ -165,10 +203,9 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@7c8c856c" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@7c8c856c" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
@@ -179,6 +216,11 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.1590909" ratioLeft="119" ratioRight="629" relationship="2" relative="org.eclipse.gef.ui.palette_view"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1142cf2a" ratio="0.7490637" ratioLeft="600" ratioRight="201" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
 <info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="332" ratioRight="332" relationship="4" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
@@ -246,12 +288,14 @@
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.ui.views.ProblemView"/>
-<view id="org.eclipse.jdt.ui.JavadocView"/>
-<view id="org.eclipse.jdt.ui.SourceView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViews>
+<view id="org.eclipse.ui.views.ProblemView" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
+</fastViews>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -275,22 +319,19 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24978687" ratioLeft="293" ratioRight="880" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.7406015" ratioLeft="591" ratioRight="207" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.75062656" ratioLeft="599" ratioRight="199" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
-<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
-<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.JavadocView" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="LabelNotFound"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -307,165 +348,252 @@
 </mainWindow>
 </layout>
 </perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
+<descriptor class="com.android.ide.eclipse.ddms.Perspective" id="com.android.ide.eclipse.ddms.Perspective" label="DDMS"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.DeviceView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.FileExplorerView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.HeapView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.AllocTrackerView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.LogCatView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.ThreadView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.NetworkStatsView"/>
+<show_view_action id="com.android.ide.eclipse.ddms.views.SysInfoView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.ui.views.BookmarkView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ProgressView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<perspective_action id="org.eclipse.ui.resourcePerspective"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="com.android.ide.eclipse.ddms.views.DeviceView"/>
+<view id="com.android.ide.eclipse.ddms.views.ThreadView"/>
+<view id="com.android.ide.eclipse.ddms.views.HeapView"/>
+<view id="com.android.ide.eclipse.ddms.views.AllocTrackerView"/>
+<view id="com.android.ide.eclipse.ddms.views.NetworkStatsView"/>
+<view id="com.android.ide.eclipse.ddms.views.FileExplorerView"/>
+<view id="com.android.ide.eclipse.ddms.views.EmulatorControlView"/>
+<view id="com.android.ide.eclipse.ddms.views.SysInfoView"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
+<fastViewBars/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@4a693261">&#x0A;<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="devices" ratio="0.2496879" ratioLeft="200" ratioRight="601" relationship="4" relative="org.eclipse.ui.internal.ViewStack@4a693261">&#x0A;<folder activePageID="com.android.ide.eclipse.ddms.views.DeviceView" appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.DeviceView" label="Devices"/>
+<page content="com.android.ide.eclipse.ddms.views.DeviceView:*" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.74983627" ratioLeft="1145" ratioRight="382" relationship="2" relative="devices">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="logcat" ratio="0.7990013" ratioLeft="640" ratioRight="161" relationship="4" relative="devices">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.LogCatView:*" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.2999345" ratioLeft="458" ratioRight="1069" relationship="2" relative="devices"/>
+<info folder="true" part="ddms-detail" ratio="0.49953228" ratioLeft="534" ratioRight="535" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="com.android.ide.eclipse.ddms.views.NetworkStatsView" appearance="2" expanded="2">&#x0A;<page content="com.android.ide.eclipse.ddms.views.ThreadView" label="Threads"/>
+<page content="com.android.ide.eclipse.ddms.views.HeapView" label="Heap"/>
+<page content="com.android.ide.eclipse.ddms.views.AllocTrackerView" label="Allocation Tracker"/>
+<page content="com.android.ide.eclipse.ddms.views.NetworkStatsView" label="Network Statistics"/>
+<page content="com.android.ide.eclipse.ddms.views.FileExplorerView" label="File Explorer"/>
+<page content="com.android.ide.eclipse.ddms.views.EmulatorControlView" label="Emulator Control"/>
+<page content="com.android.ide.eclipse.ddms.views.SysInfoView" label="System Information"/>
+<page content="com.android.ide.eclipse.ddms.views.ThreadView:*" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
 </perspectives>
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/LabelAbeille/assets/www/templates.html"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/carte.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/LabelAbeille/assets/www/index.html"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/fonctions.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/LabelAbeille/assets/www/css/accueil.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/LabelAbeille/assets/www/css/index.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/index.js"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/fonctionsJQ.js"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/carte.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/LabelAbeille/assets/www/index.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/LabelAbeille/AndroidManifest.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" path="/LabelAbeille/assets/www/index.html"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/index.js"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/LabelAbeille/AndroidManifest.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" path="/LabelAbeille/assets/www/js/index.js"/>
 </editors>
-<item historyLabel="carte.js" index="0">
-<position info="not_deleted" x="984" y="0"/>
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="9036" y="0"/>
 </item>
-<item historyLabel="carte.js" index="0">
-<position info="not_deleted" x="1037" y="0"/>
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="9104" y="0"/>
 </item>
-<item historyLabel="carte.js" index="0">
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="14317" y="0"/>
+</item>
+<item historyLabel="templates.html" index="0">
+<position info="not_deleted" x="1060" y="0"/>
+</item>
+<item historyLabel="accueil.css" index="3">
+<position info="not_deleted" x="566" y="0"/>
+</item>
+<item historyLabel="carte.js" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="fonctionsJQ.js" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="carte.js" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="accueil.css" index="3">
+<position info="not_deleted" x="566" y="0"/>
+</item>
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="14317" y="0"/>
+</item>
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="14319" y="0"/>
+</item>
+<item historyLabel="index.html" index="2">
 <position/>
 </item>
-<item historyLabel="carte.js" index="0">
-<position info="not_deleted" x="178" y="0"/>
+<item historyLabel="index.css" index="4">
+<position info="not_deleted" x="2099" y="0"/>
 </item>
-<item historyLabel="carte.js" index="0">
-<position info="not_deleted" x="206" y="0"/>
+<item historyLabel="accueil.css" index="3">
+<position info="not_deleted" x="564" y="0"/>
 </item>
-<item historyLabel="carte.js" index="0">
-<position info="not_deleted" x="817" y="0"/>
+<item historyLabel="index.js" index="5">
+<position info="not_deleted" x="625" y="0"/>
 </item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="33" y="0"/>
+<item historyLabel="index.html" index="2">
+<position info="not_deleted" x="7616" y="0"/>
 </item>
-<item historyLabel="fonctions.js" index="2">
-<position info="not_deleted" x="1900" y="0"/>
+<item historyLabel="accueil.css" index="3">
+<position info="not_deleted" x="1237" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="4019" y="0"/>
+<item historyLabel="index.css" index="4">
+<position info="not_deleted" x="1654" y="0"/>
 </item>
-<item historyLabel="fonctions.js" index="2">
-<position info="not_deleted" x="1900" y="0"/>
+<item historyLabel="templates.html" index="0">
+<position info="not_deleted" x="1060" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
+<item historyLabel="accueil.css" index="3">
+<position info="not_deleted" x="1237" y="0"/>
+</item>
+<item historyLabel="index.html" index="7">
+<position info="not_deleted" x="7614" y="0"/>
+</item>
+<item historyLabel="LabelAbeille Manifest" index="8"/>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="3251" y="0"/>
+</item>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="2196" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="8629" y="0"/>
+</item>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="2083" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="8629" y="0"/>
+</item>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="1994" y="4"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="8629" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="15255" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="15257" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16980" y="0"/>
+</item>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="2083" y="0"/>
+</item>
+<item historyLabel="index.js" index="10">
 <position/>
 </item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="3556" y="0"/>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="182" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="14695" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="1973" y="0"/>
 </item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="3602" y="0"/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="15007" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16204" y="0"/>
 </item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="4495" y="0"/>
+<item historyLabel="index.html" index="9">
+<position info="not_deleted" x="1973" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16204" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16108" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16204" y="0"/>
 </item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="2756" y="0"/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="16156" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="7816" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="7102" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="index.js" index="10">
+<position info="not_deleted" x="14038" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
+<item historyLabel="LabelAbeille Manifest" index="11"/>
+<item historyLabel="index.js" index="12">
+<position info="not_deleted" x="14264" y="0"/>
 </item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="2766" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3504" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3591" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="4799" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3687" y="92"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="4551" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3722" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="4784" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3722" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3635" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3637" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="2607" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3637" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3776" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="2813" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3862" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="2607" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="3742" y="0"/>
-</item>
-<item historyLabel="index.html" index="1">
-<position info="not_deleted" x="4554" y="0"/>
-</item>
-<item historyLabel="fonctionsJQ.js" index="3">
-<position info="not_deleted" x="4017" y="0"/>
-</item>
-<item active="true" historyLabel="carte.js" index="4">
-<position info="not_deleted" x="34221" y="0"/>
+<item active="true" historyLabel="index.js" index="12">
+<position info="not_deleted" x="12990" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -484,11 +612,38 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="carte.js" tooltip="LabelAbeille/assets/www/js/carte.js">
-<persistable path="/LabelAbeille/assets/www/js/carte.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="LabelAbeille/AndroidManifest.xml">
+<persistable path="/LabelAbeille/AndroidManifest.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="fonctionsJQ.js" tooltip="LabelAbeille/assets/www/js/fonctionsJQ.js">
 <persistable path="/LabelAbeille/assets/www/js/fonctionsJQ.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="carte.js" tooltip="LabelAbeille/assets/www/js/carte.js">
+<persistable path="/LabelAbeille/assets/www/js/carte.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="index.js" tooltip="LabelAbeille/assets/www/js/index.js">
+<persistable path="/LabelAbeille/assets/www/js/index.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="chargement.js" tooltip="LabelAbeille/assets/www/js/chargement.js">
+<persistable path="/LabelAbeille/assets/www/js/chargement.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="chapeau.js" tooltip="LabelAbeille/assets/www/js/chapeau.js">
+<persistable path="/LabelAbeille/assets/www/js/chapeau.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="fonctionsJQ_test.js" tooltip="LabelAbeille/assets/www/js/fonctionsJQ_test.js">
+<persistable path="/LabelAbeille/assets/www/js/fonctionsJQ_test.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="templates.html" tooltip="LabelAbeille/assets/www/templates.html">
+<persistable path="/LabelAbeille/assets/www/templates.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="accueil.css" tooltip="LabelAbeille/assets/www/css/accueil.css">
+<persistable path="/LabelAbeille/assets/www/css/accueil.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="details.css" tooltip="LabelAbeille/assets/www/css/details.css">
+<persistable path="/LabelAbeille/assets/www/css/details.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="index.css" tooltip="LabelAbeille/assets/www/css/index.css">
+<persistable path="/LabelAbeille/assets/www/css/index.css"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="fonctions.js" tooltip="LabelAbeille/assets/www/js/fonctions.js">
 <persistable path="/LabelAbeille/assets/www/js/fonctions.js"/>
@@ -501,21 +656,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="LabelAbeille/src/www/labelabeille/fr/MainActivity.java">
 <persistable path="/LabelAbeille/src/www/labelabeille/fr/MainActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WhitelistPlugin.java" tooltip="LabelAbeille/src/org/apache/cordova/whitelist/WhitelistPlugin.java">
-<persistable path="/LabelAbeille/src/org/apache/cordova/whitelist/WhitelistPlugin.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="MainActivity/AndroidManifest.xml">
-<persistable path="/MainActivity/AndroidManifest.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="funs.js" tooltip="LabelAbeille/assets/www/js/funs.js">
-<persistable path="/LabelAbeille/assets/www/js/funs.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="index.js" tooltip="LabelAbeille/assets/www/js/index.js">
-<persistable path="/LabelAbeille/assets/www/js/index.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="index.html" tooltip="LabelAbeille/assets/www/index.html">
-<persistable path="/LabelAbeille/assets/www/index.html"/>
 </file>
 </mruList>
 </workbench>

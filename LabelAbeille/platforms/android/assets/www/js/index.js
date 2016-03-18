@@ -324,7 +324,7 @@ function connexion(user, passwd, success, failure) {
         console.log(user);
         console.log(passwd);
 		enCharge=true;
-		$.support.cors = true;
+		//$.support.cors = true;
 		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
 		/*request = new XMLHttpRequest();
@@ -389,7 +389,7 @@ function getListHives(action) {
 /* récupération des données d'une ruche */
 function getDataHive(id, name, action) {
 		enCharge=true;
-		$.support.cors = true;
+		//$.support.cors = true;
 		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
         $.ajax({
@@ -425,7 +425,7 @@ function getHivesCoordinates(action) {
         }
     });
 };
-var url = 'https://api.label-abeille.org/app.php/';
+var url = 'https://api.label-abeille.org/';
 /* fonction qui récupère et traite les données de connexion */
 function connect() {
 	$("#valider_connexion").on(evtclick, function(){
