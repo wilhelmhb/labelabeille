@@ -318,10 +318,26 @@ function debut(){
 
 
 	_("btCarte").addEventListener(evtclick, goToMap); 
-	var btsRetour = document.getElementsByClassName('retour');
-	for(var i=0, l=btsRetour.length; i<l; i++){
-	 btsRetour[i].addEventListener(evtclick,function(){retour();}); 
-	}
+
+	/* configurer précisément les boutons de retour */
+	_("retour_params_generaux").addEventListener(evtclick,function(){
+		goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
+	});
+	_("retour_params_rucher").addEventListener(evtclick,function(){
+		return false;
+	});
+	_("retour_params_ruche").addEventListener(evtclick,function(){
+		goToDataHive(
+	    		hiveGroups[idHiveGroup].hives[idHive].data,
+	    		hiveGroups[idHiveGroup].hives[idHive].name);
+	});
+	_("retour_params_details").addEventListener(evtclick,function(){
+		goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
+	});
+	_("retour_params_carte").addEventListener(evtclick,function(){
+		goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
+	});
+	
 	_("btBd").addEventListener(evtclick,masquerBd);
 	tcharge = setInterval(charger,20);
  	pcharge=0;
