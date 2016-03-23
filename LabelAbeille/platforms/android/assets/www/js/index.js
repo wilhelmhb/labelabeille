@@ -18,15 +18,252 @@ var pcharge;
 var slider;
 var templateCharge=false;
 var evtclick="click";
-
+var customer = null;
+var client = null;
+var hiveGroups = [{}];
+var idHiveGroup = 0;
+var dataHive = null;
+var idHive = 0;
+var test = {
+    "customer": { "email": "jean.dupont@mail.com", "id": 23, "firstname": "Jean", "lastname": "Dupont" }, 
+    "client": null, 
+    "hivegroups": [
+        {
+        "id_hive_group":18,
+        "id_client":11,
+        "name":"Rucher principal",
+        "harvest":20,
+        "date_add":"2016-03-08T15:32:09+0100",
+        "date_upd":"2016-01-18T14:03:22+0100"
+        }
+    ],
+    "hives": [
+        {
+            "id_hive":6,
+            "id_client":11,
+            "id_hive_group":18,
+            "name":"RUCHE.6",
+            "note": "",
+            "latitude":0,
+            "longitude":0,
+            "active":true,
+            "hive_type":"dadant",
+            "bees_type":"buckfast",
+            "material":"wood",
+            "support":"steel_frame",
+            "state":"bad",
+            "harvest":20,
+            "notes":"",
+            "date_add":"2016-01-18T14:03:22+0100",
+            "date_upd":"2016-03-08T15:32:09+0100", 
+            "data": {
+                "BAT":{"v":"3.477","h":"22\/03\/2016 09:53:04","u":"V"},
+                "DEF.DEF_BATTERIE_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_BATTERIE_MOY":{"v":"Présent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_COM":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_GEO":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_MASSE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_ORI":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_POIDS_TARE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "HORODATE":{"v":"22\/03\/2016 13:55:19","h":"22\/03\/2016 13:55:19","u":""},
+                "HUM":{"v":"62","h":"22\/03\/2016 13:55:12","u":"%"},
+                "LAT":{"v":"47.952164","h":"17\/03\/2016 04:30:00","u":""},
+                "LNG":{"v":"1.837055","h":"17\/03\/2016 04:30:00","u":""},
+                "LUM":{"v":"2054","h":"22\/03\/2016 13:55:12","u":"lx"},
+                "MASSE":{"v":"19.530","h":"22\/03\/2016 13:55:12","u":"kg"},
+                "MODE":{"v":"Sigfox","h":"17\/03\/2016 03:21:58","u":""},
+                "ORI":{"v":"278","h":"16\/03\/2016 13:18:37","u":""},
+                "PARAM.COMMENTAIRE":{"v":"","h":"01\/01\/1970 01:00:00","u":""},
+                "PARAM.NB_ABEILLE":{"v":"50000.0","h":"16\/06\/2015 00:00:00","u":""},
+                "PARAM.NB_HAUSSE":{"v":"1","h":"12\/06\/2015 00:00:00","u":""},
+                "PARAM.POIDS_ESSAIM":{"v":"5.000","h":"22\/09\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RECOLTE":{"v":"30.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RUCHE_VIERGE":{"v":"15.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_HAUSSE":{"v":"5.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_RUCHE":{"v":"20.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS":{"v":"1.0","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS_DUREE":{"v":"16","h":"12\/06\/2015 00:00:00","u":"h"},
+                "PARAM.SEUIL_HUMIDITE_MAX":{"v":"90.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_HUMIDITE_MIN":{"v":"20.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_TEMP_MAX":{"v":"30.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "PARAM.SEUIL_TEMP_MIN":{"v":"0.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "TMP":{"v":"11.1","h":"22\/03\/2016 13:55:12","u":"°C"},
+                "VOL":{"v":"Présent","h":"08\/03\/2016 08:29:36","u":""}}
+        },
+        {
+            "id_hive":22,"id_client":11,"id_hive_group":18,"name":"RUCHE.10","latitude":0,"longitude":0,
+            "active":true,"hive_type":"dadant","bees_type":"buckfast","material":"wood", "note": "",
+            "support":"steel_frame","state":"bad","harvest":0,"notes":"",
+            "date_add":"2016-03-08T15:46:32+0100","date_upd":"2016-03-08T15:46:32+0100", 
+            "data": {
+                "BAT":{"v":"3.477","h":"22\/03\/2016 09:53:04","u":"V"},
+                "DEF.DEF_BATTERIE_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_BATTERIE_MOY":{"v":"Présent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_COM":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_GEO":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_MASSE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_ORI":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_POIDS_TARE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "HORODATE":{"v":"22\/03\/2016 13:55:19","h":"22\/03\/2016 13:55:19","u":""},
+                "HUM":{"v":"62","h":"22\/03\/2016 13:55:12","u":"%"},
+                "LAT":{"v":"47.952164","h":"17\/03\/2016 04:30:00","u":""},
+                "LNG":{"v":"1.837055","h":"17\/03\/2016 04:30:00","u":""},
+                "LUM":{"v":"2054","h":"22\/03\/2016 13:55:12","u":"lx"},
+                "MASSE":{"v":"19.530","h":"22\/03\/2016 13:55:12","u":"kg"},
+                "MODE":{"v":"Sigfox","h":"17\/03\/2016 03:21:58","u":""},
+                "ORI":{"v":"278","h":"16\/03\/2016 13:18:37","u":""},
+                "PARAM.COMMENTAIRE":{"v":"","h":"01\/01\/1970 01:00:00","u":""},
+                "PARAM.NB_ABEILLE":{"v":"50000.0","h":"16\/06\/2015 00:00:00","u":""},
+                "PARAM.NB_HAUSSE":{"v":"1","h":"12\/06\/2015 00:00:00","u":""},
+                "PARAM.POIDS_ESSAIM":{"v":"5.000","h":"22\/09\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RECOLTE":{"v":"30.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RUCHE_VIERGE":{"v":"15.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_HAUSSE":{"v":"5.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_RUCHE":{"v":"20.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS":{"v":"1.0","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS_DUREE":{"v":"16","h":"12\/06\/2015 00:00:00","u":"h"},
+                "PARAM.SEUIL_HUMIDITE_MAX":{"v":"90.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_HUMIDITE_MIN":{"v":"20.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_TEMP_MAX":{"v":"30.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "PARAM.SEUIL_TEMP_MIN":{"v":"0.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "TMP":{"v":"11.1","h":"22\/03\/2016 13:55:12","u":"°C"},
+                "VOL":{"v":"Présent","h":"08\/03\/2016 08:29:36","u":""}}
+        },
+        {
+            "id_hive":23,
+            "id_client":11,
+            "id_hive_group":18,
+            "name":"RUCHE.11",
+            "latitude":0,
+            "longitude":0,
+            "active":true,
+            "hive_type":"dadant",
+            "bees_type":"buckfast",
+            "material":"wood",
+            "support":"steel_frame",
+            "state":"bad",
+            "harvest":0,
+            "note":"",
+            "notes":"",
+            "date_add":"2016-03-08T15:46:51+0100",
+            "date_upd":"2016-03-08T15:46:51+0100",
+            "data": {"idruche":2,"idclient":1,
+                "BAT":{"v":"3.477","h":"22\/03\/2016 09:53:04","u":"V"},
+                "DEF.DEF_BATTERIE_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_BATTERIE_MOY":{"v":"Présent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_COM":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_GEO":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_MASSE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_ORI":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_POIDS_TARE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "HORODATE":{"v":"22\/03\/2016 13:55:19","h":"22\/03\/2016 13:55:19","u":""},
+                "HUM":{"v":"62","h":"22\/03\/2016 13:55:12","u":"%"},
+                "LAT":{"v":"47.952164","h":"17\/03\/2016 04:30:00","u":""},
+                "LNG":{"v":"1.837055","h":"17\/03\/2016 04:30:00","u":""},
+                "LUM":{"v":"2054","h":"22\/03\/2016 13:55:12","u":"lx"},
+                "MASSE":{"v":"19.530","h":"22\/03\/2016 13:55:12","u":"kg"},
+                "MODE":{"v":"Sigfox","h":"17\/03\/2016 03:21:58","u":""},
+                "ORI":{"v":"278","h":"16\/03\/2016 13:18:37","u":""},
+                "PARAM.COMMENTAIRE":{"v":"","h":"01\/01\/1970 01:00:00","u":""},
+                "PARAM.NB_ABEILLE":{"v":"50000.0","h":"16\/06\/2015 00:00:00","u":""},
+                "PARAM.NB_HAUSSE":{"v":"1","h":"12\/06\/2015 00:00:00","u":""},
+                "PARAM.POIDS_ESSAIM":{"v":"5.000","h":"22\/09\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RECOLTE":{"v":"30.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RUCHE_VIERGE":{"v":"15.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_HAUSSE":{"v":"5.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_RUCHE":{"v":"20.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS":{"v":"1.0","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS_DUREE":{"v":"16","h":"12\/06\/2015 00:00:00","u":"h"},
+                "PARAM.SEUIL_HUMIDITE_MAX":{"v":"90.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_HUMIDITE_MIN":{"v":"20.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_TEMP_MAX":{"v":"30.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "PARAM.SEUIL_TEMP_MIN":{"v":"0.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "TMP":{"v":"11.1","h":"22\/03\/2016 13:55:12","u":"°C"},
+                "VOL":{"v":"Présent","h":"08\/03\/2016 08:29:36","u":""}
+            }
+        },
+        {
+            "id_hive":24,
+            "id_client":11,
+            "id_hive_group":18,
+            "name":"MaRuche",
+            "latitude":0,
+            "longitude":0,
+            "active":false,
+            "hive_type":"test",
+            "bees_type":"test",
+            "material":"test",
+            "support":"test",
+            "state":"test",
+            "harvest":1,
+            "note":"",
+            "date_add":"2011-01-01T00:00:00+0100",
+            "date_upd":"2011-01-01T00:00:00+0100",
+            "data": {"idruche":2,"idclient":1,
+                "BAT":{"v":"3.477","h":"22\/03\/2016 09:53:04","u":"V"},
+                "DEF.DEF_BATTERIE_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_BATTERIE_MOY":{"v":"Présent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_COM":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_GEO":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_HUM_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_MASSE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_ORI":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_POIDS_TARE":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MAX":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "DEF.DEF_TEMP_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
+                "HORODATE":{"v":"22\/03\/2016 13:55:19","h":"22\/03\/2016 13:55:19","u":""},
+                "HUM":{"v":"62","h":"22\/03\/2016 13:55:12","u":"%"},
+                "LAT":{"v":"47.952164","h":"17\/03\/2016 04:30:00","u":""},
+                "LNG":{"v":"1.837055","h":"17\/03\/2016 04:30:00","u":""},
+                "LUM":{"v":"2054","h":"22\/03\/2016 13:55:12","u":"lx"},
+                "MASSE":{"v":"19.530","h":"22\/03\/2016 13:55:12","u":"kg"},
+                "MODE":{"v":"Sigfox","h":"17\/03\/2016 03:21:58","u":""},
+                "ORI":{"v":"278","h":"16\/03\/2016 13:18:37","u":""},
+                "PARAM.COMMENTAIRE":{"v":"","h":"01\/01\/1970 01:00:00","u":""},
+                "PARAM.NB_ABEILLE":{"v":"50000.0","h":"16\/06\/2015 00:00:00","u":""},
+                "PARAM.NB_HAUSSE":{"v":"1","h":"12\/06\/2015 00:00:00","u":""},
+                "PARAM.POIDS_ESSAIM":{"v":"5.000","h":"22\/09\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RECOLTE":{"v":"30.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.POIDS_RUCHE_VIERGE":{"v":"15.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_HAUSSE":{"v":"5.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.PROD_MIEL_RUCHE":{"v":"20.000","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS":{"v":"1.0","h":"12\/06\/2015 00:00:00","u":"kg"},
+                "PARAM.SEUIL_BAISSE_POIDS_DUREE":{"v":"16","h":"12\/06\/2015 00:00:00","u":"h"},
+                "PARAM.SEUIL_HUMIDITE_MAX":{"v":"90.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_HUMIDITE_MIN":{"v":"20.0","h":"12\/06\/2015 00:00:00","u":"%"},
+                "PARAM.SEUIL_TEMP_MAX":{"v":"30.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "PARAM.SEUIL_TEMP_MIN":{"v":"0.0","h":"12\/06\/2015 00:00:00","u":"°C"},
+                "TMP":{"v":"11.1","h":"22\/03\/2016 13:55:12","u":"°C"},
+                "VOL":{"v":"Présent","h":"08\/03\/2016 08:29:36","u":""}
+            }
+        }
+    ], 
+    
+};
+var isTest = false;
+document.addEventListener('deviceready', function () {
+	cordova.plugins.backgroundMode.enable();
+}, false);
 
 function debut(){
 	dessinCercleFLAT(_("canvasProgressSimple"),0);
-	cordova.plugins.backgroundMode.enable();
     new FastClick(document.body);
  	masquerBd();
 	slider = new PageSlider($("#container"),$(_("pchargement")));
-	//_("btReglages").addEventListener(evtclick,function(){transition(_("pparametres"),"");}); 		
+	_("btReglages").addEventListener(evtclick,function(){goToGeneralParameters();}); 		
 
 	_("sitemobile").addEventListener(evtclick,function(){
 		_("ch").style.visibility="visible";
@@ -166,50 +403,50 @@ function charger(){
  }
 }
 function organiserRuches(nbRuches){
-	console.log(nbRuches);
+	//console.log(nbRuches);
 	var h,w;
-	console.log(_("ruche1").offsetHeight);
+	//console.log(_("ruche1").offsetHeight);
 	if(_("ruche1").offsetHeight != null) {
-		console.log('ok');
+		//console.log('ok');
 		h = _("ruche1").offsetHeight;
 	}
 	else {
-		console.log(_("ruche1").pixelHeight != null);
+		//console.log(_("ruche1").pixelHeight != null);
 		if(_("ruche1").style.pixelHeight) {
 			h = _("ruche1").style.pixelHeight;
 		}
 		else {
-			console.log("ProblèmeH");
+			//console.log("ProblèmeH");
 		}
 	}
-	console.log(_("ruche1").offsetWidth);
+	//console.log(_("ruche1").offsetWidth);
 	if(_("ruche1").offsetWidth != null) {
 		w = _("ruche1").offsetWidth;
 	}
 	else {
-		console.log(_("ruche1").pixelWidth);
+		//console.log(_("ruche1").pixelWidth);
 		if(_("ruche1").style.pixelWidth != null){
 			w = _("ruche1").style.pixelWidth;
 		}
 		else {
-			console.log("ProblèmeW");
+			//console.log("ProblèmeW");
 		}
 	}
-	console.log(h+","+w);
+	//console.log(h+","+w);
 	for(i=2; i<=nbRuches; i++){
 		_("ruche"+i).style.top = h*(0.76*(i-1))+'px';
 		_("ruche"+i).style.left = w*(0.5*((i%2==0)?1:0))+'px';
-		console.log(_("ruche"+i).style);
+		//console.log(_("ruche"+i).style);
 	}
 	for(i=1; i<=nbRuches; i++){
 		_("ruche"+i).addEventListener(evtclick,function(){
 			if(!enCharge){
 				var k = this.getElementsByTagName("h2")[0].textContent;
 				var n = this.getElementsByTagName("h1")[0].textContent;
-				console.log(k);
-				console.log(n)
+				//console.log(k);
+				console.log("aller à la ruche : "+n);
 				k = k.substring(1, k.length-1);
-				console.log(k);
+				//console.log(k);
 				rucheSelect=k;
 				getDataHive(k, n, goToDataHives);
 			}			
@@ -217,7 +454,7 @@ function organiserRuches(nbRuches){
 	}
 }
 function parametresRuche(){
-	//transition(_("pparametres"),"");
+	transition(_("pparametres"),"");
 }
 function check(n){
 	if(checkb[n]){
@@ -241,9 +478,9 @@ function afficherBd(mes,bt) {
 
 function retour(){slider.slidePageFrom(null,"left");}
 function transition(p2,mode,p1){
-	console.log('transition : begin');
+	//console.log('transition : begin');
 	slider.slidePageFrom(p2,"right");
-	console.log('transition : end');
+	//console.log('transition : end');
 }
 function PageSlider(container,pageinit) {
 
@@ -254,9 +491,9 @@ function PageSlider(container,pageinit) {
 
     // Use this function directly if you want to control the sliding direction outside PageSlider
     this.slidePageFrom = function(dest, from) {
-    	console.log('slidePageFrom : begin, enTransition='+enTransition);
+    	//console.log('slidePageFrom : begin, enTransition='+enTransition);
         if(!enTransition){
-        	console.log('slidePageFrom : isNotEnTransition');
+        	//console.log('slidePageFrom : isNotEnTransition');
 	        enTransition=true;
 			if(dest==null)dest=hist.pop();// si aucune destination n'est affichée, la destination est la dernière page visitée précedemment
 			else{
@@ -276,7 +513,7 @@ function PageSlider(container,pageinit) {
 	        dest.attr("class", "page " + from);
 	
 	        currentPage.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-	        	console.log('slidePageFrom : webkitTransitionEnd');
+	        	//console.log('slidePageFrom : webkitTransitionEnd');
 	                        enTransition=false;
 	            $(e.target).remove();
 				$("#pages").append(e.target);
@@ -290,7 +527,7 @@ function PageSlider(container,pageinit) {
 	        currentPage.attr("class", "page transition " + (from === "left" ? "right" : "left"));
 	        currentPage = dest;
         }
-    	console.log('slidePageFrom : end, enTransition='+enTransition);
+    	//console.log('slidePageFrom : end, enTransition='+enTransition);
     };
 
 }
@@ -322,70 +559,73 @@ function creer_ruche() {
 }
 /* connexion */
 function connexion(user, passwd, success, failure) {
-        console.log(user);
-        console.log(passwd);
+        //console.log(user);
+        //console.log(passwd);
 		enCharge=true;
-		//$.support.cors = true;
-		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
-		/*request = new XMLHttpRequest();
-		request.open("GET", url+'login.html', true);
-		
-		request.onreadystatechange = function() {
-			  console.log("** state = " + request.readyState);
-			  if (request.readyState == 4) {
-			      console.log("** status = " + request.status);
-			      console.log(request.responseText);
-			  }
-		};
-
-		request.send();*/
-        $.ajax({
-            type: 'POST',
-            url: url+'login_check',
-            //url: url+'test/connections',
-            data: '_username='+user+'&_password='+passwd,
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(data) {
-				enCharge=false;
-				_("ch").style.visibility="hidden";
-            	console.log(data); 
-            	//$("#result").html(data+'');
-            	success();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-				_("ch").style.visibility="hidden";
-				enCharge=false;
-                console.log('echec');
-                console.log(xhr.responseText);
-                console.log(ajaxOptions);
-                failure();
-                //$("#result").html(xhr.responseText);
-            }
-        });
+		if(isTest) {
+			enCharge=false;
+			_("ch").style.visibility="hidden";
+		    customer = test.customer;
+		    success();
+		}
+		else {
+            $.ajax({
+                type: 'POST',
+                url: url+'login_check',
+                data: '_username='+user+'&_password='+passwd,
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(data) {
+				    enCharge=false;
+				    _("ch").style.visibility="hidden";
+                	console.log(JSON.stringify(data)); 
+                	//$("#result").html(data+'');
+                	customer = data;
+                	success();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+				    _("ch").style.visibility="hidden";
+				    enCharge=false;
+                    //console.log('echec');
+                    //console.log(xhr.responseText);
+                    //console.log(ajaxOptions);
+                    failure();
+                    //$("#result").html(xhr.responseText);
+                }
+            });
+        }
 }
 /* récupération de la liste des ruches */
 function getListHives(action) {
 		enCharge=true;
 		_("ch").style.visibility="visible";
-        $.ajax({
-            type: 'GET',
-            url: url+'pscustomer/hives/me',
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(data) {
-				enCharge=false;
-				_("ch").style.visibility="hidden";
-                console.log(JSON.stringify(data)); 
-                //$("#resultat").html(JSON.stringify(data));
-                action(data);
-            },
-        });
+		if(isTest) {
+		    enCharge=false;
+		    hiveGroups[idHiveGroup].hives = test.hives;
+			_("ch").style.visibility="hidden";
+			action(test.hives);
+		}
+		else {
+            $.ajax({
+                type: 'GET',
+                url: url+'pscustomer/hives/me',
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(data) {
+				    enCharge=false;
+				    _("ch").style.visibility="hidden";
+                    //console.log(JSON.stringify(data)); 
+                    //$("#resultat").html(JSON.stringify(data));
+				    hiveGroups[idHiveGroup].hives = data;
+                    action(data);
+                },
+            });
+        }
 }
 /* récupération des données d'une ruche */
 function getDataHive(id, name, action) {
@@ -393,23 +633,41 @@ function getDataHive(id, name, action) {
 		//$.support.cors = true;
 		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
-        $.ajax({
-            type: 'GET',
-            url: url+'pscustomer/hives/'+id+'/me',
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(data) {
-				enCharge=false;
-				_("ch").style.visibility="hidden";
-				console.log(id);
-            	console.log(JSON.stringify(data)); 
-				console.log(JSON.stringify(data["param.poids_essaim"])); 
-            	//$("#resultat").html(JSON.stringify(data));
-            	action(name, data);
-            }
-        });
+		console.log('on prend les données de la ruche '+name+" et id "+id);
+		if(isTest) {
+			enCharge=false;
+			_("ch").style.visibility="hidden";
+			for(var i = 0; i< test.hives.length; i++) {
+				console.log(test.hives[i].id_hive);
+			    if(test.hives[i].id_hive == id) {
+				    idHive = i;
+				    console.log(i);
+			    	dataHive = test.hives[i].data;
+			        action(name, test.hives[i].data);
+			    }
+			}
+		}
+		else {
+            $.ajax({
+                type: 'GET',
+                url: url+'pscustomer/hives/'+id+'/me',
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(data) {
+				    enCharge=false;
+				    idHive = id;
+			    	dataHive = hiveGroups[idHiveGroup].hives[idHive].data;
+				    _("ch").style.visibility="hidden";
+				    //console.log(id);
+                	//console.log(JSON.stringify(data)); 
+				    //console.log(JSON.stringify(data["param.poids_essaim"])); 
+                	//$("#resultat").html(JSON.stringify(data));
+                	action(name, data);
+                }
+            });
+        }
 };
 function getHivesCoordinates(action) {
     $.ajax({
@@ -420,21 +678,22 @@ function getHivesCoordinates(action) {
             withCredentials: true
         },
         success: function(data) {
-        	console.log(JSON.stringify(data)); 
+        	//console.log(JSON.stringify(data)); 
         	//$("#resultat").html(JSON.stringify(data));
         	action(data);
         }
     });
 };
-var url = 'https://api.label-abeille.org/';
+var url1 = 'https://api.label-abeille.org/';
+var url = 'http://localhost/Symfony2/api_labelabeille_reduite/web/app_dev.php/';
 /* fonction qui récupère et traite les données de connexion */
 function connect() {
 	$("#valider_connexion").on(evtclick, function(){
 		if(!enCharge){
         	var user = encodeURIComponent($("#email_connexion").val());
-        	console.log(user);
+        	//console.log(user);
         	var login = encodeURIComponent($("#mdp_connexion").val());
-        	console.log(login);
+        	//console.log(login);
         	connexion(user, login, connexion_success, connexion_failure);
 		}
     });
@@ -448,7 +707,7 @@ function connexion_success() {
 	_("btBd").addEventListener(evtclick, function (){
 		getListHives(
 			function(listHives){
-				console.log(listHives);
+				//console.log(listHives);
 				enCharge=false;
 				_("ch").style.visibility="hidden";
 				var template = $(templates).filter('#tpl-accueil').html();
@@ -458,25 +717,25 @@ function connexion_success() {
 					    "idx": function() {
 					        return idx++;
 					    }};
-				console.log(listHives.ruches.length);
-				console.log(JSON.stringify(listHives)); 
+				//console.log(listHives.ruches.length);
+				//console.log(JSON.stringify(listHives)); 
 			    var h = Mustache.render(template, listHives);
-			    console.log(h);
+			    //console.log(h);
 			    document.getElementById("content-accueil").innerHTML = h;
-			    console.log(document.getElementById("paccueil").innerHTML);
+			    //console.log(document.getElementById("paccueil").innerHTML);
 			    organiserRuches(listHives.ruches.length);
-			    console.log('goToListHives : befire transition');
+			    //console.log('goToListHives : befire transition');
 			    _("container").innerHTML = "";
-			    console.log(_("container").innerHTML);
+			    //console.log(_("container").innerHTML);
 			    $("#container").append(_("paccueil"));
 			    masquerBd();
-			    console.log('goToListHives : end');
+			    //console.log('goToListHives : end');
 			}
 		);
 	});
 }
 function goToListHives(listHives) {
-	console.log('goToListHives : begin');
+	//console.log('goToListHives : begin');
 	var template = $(templates).filter('#tpl-accueil').html();
 	var idx = 1;
 	listHives = {
@@ -484,32 +743,33 @@ function goToListHives(listHives) {
 		    "idx": function() {
 		        return idx++;
 		    }};
-	console.log(listHives.ruches.length);
-	console.log(JSON.stringify(listHives)); 
-	console.log(listHives.ruches[0].name);
+	//console.log(listHives.ruches.length);
+	//console.log(JSON.stringify(listHives)); 
+	//console.log(listHives.ruches[0].name);
     var h = Mustache.render(template, listHives);
-    console.log(h);
+    //console.log(h);
     document.getElementById("content-accueil").innerHTML = h;
-    console.log(document.getElementById("paccueil").innerHTML);
-    console.log('goToListHives : before transition');
+    //console.log(document.getElementById("paccueil").innerHTML);
+    //console.log('goToListHives : before transition');
     transition(_("paccueil"), "slide");
     organiserRuches(listHives.ruches.length);
     masquerBd();
-    console.log('goToListHives : end');
+    //console.log('goToListHives : end');
 };
 function goToDataHives(name, dataHive) {
 	var template = $(templates).filter('#tpl-details').html();
-	dataHive.recolte = dataHive["param.poids_recolte"];
-	dataHive.miel = dataHive["param.prod_miel_ruche"];
-	dataHive.essaim = dataHive["param.poids_essaim"];
+	dataHive.recolte = dataHive["PARAM.POIDS_RECOLTE"];
+	dataHive.miel = dataHive["PARAM.PROD_MIEL_RUCHE"];
+	dataHive.essaim = dataHive["PARAM.POIDS_ESSAIM"];
 	dataHive.nom = name;
   	var h = Mustache.render(template, dataHive);
+  	//console.log(dataHive);
     document.getElementById("corps").innerHTML = h;
     transition(_("pdetails"), "");
-	//_("parametresRuche").addEventListener(evtclick,parametresRuche); 
+	_("parametresRuche").addEventListener(evtclick,goToHiveParameters); 
 }
 function goToMap() {
-	console.log("goToMap");
+	//console.log("goToMap");
 	getHivesCoordinates(initializeMap);
 	transition(_("pmap"), "");
 }
@@ -559,7 +819,7 @@ function initializeMap(hiveCoordinates) {
 	/* definition of the global variables */
     var markers, map, index = 0, zoneMarkers;
     zoneMarkers = new google.maps.LatLngBounds();
-    console.log("initializeMap");
+    //console.log("initializeMap");
     /** create and place a marker on a map
      * @int n: index our the created marker
      * @map map: map where the marker will be placed
@@ -628,10 +888,10 @@ function initializeMap(hiveCoordinates) {
      */
     function displayElements() {
         createMap(document.getElementById("corps_carte"), 48.513202, 7.081958, 6);
-	    console.log(map);
+	    //console.log(map);
 	    
         if(markers != null && markers.length > 0) {
-            console.log(markers);
+            //console.log(markers);
             for(var k = 0; k < markers.length; k++) {
                 markers[k].setMap(null);
                 delete markers[k];
@@ -643,7 +903,7 @@ function initializeMap(hiveCoordinates) {
         markers = new Array();
         
 	    for(var i = 0; i < hiveCoordinates.length; i++) {
-	    	console.log(JSON.stringify(hiveCoordinates[i]));
+	    	//console.log(JSON.stringify(hiveCoordinates[i]));
 	        if(hiveCoordinates[i] != null && (hiveCoordinates[i].lat != '0.00000000' || hiveCoordinates[i].lng != '0.00000000')) {
 	            markers[index] = createMarker(index, map, hiveCoordinates[i].lat, hiveCoordinates[i].lng, "http://www.label-abeille.org/modules/cmaps/views/img/markers/yellow_pin.png");
 		        index++;
@@ -652,4 +912,142 @@ function initializeMap(hiveCoordinates) {
 	};
 	
 	displayElements();
+};
+
+function goToGeneralParameters() {
+	console.log('goToGeneralParameters : begin');
+	var template = $(templates).filter('#tpl-params-generaux').html();
+	//TODO: get idClient/idCustomer
+	/*console.log(listHives.ruches.length);
+	console.log(JSON.stringify(listHives)); 
+	console.log(listHives.ruches[0].name);*/
+    var h = Mustache.render(template, customer);
+    document.getElementById("corps-params-generaux").innerHTML = h;
+    console.log('goToGeneralParameters : before transition');
+    transition(_("pparametres"), "slide");
+    console.log(customer.id);
+    if(isTest) {
+    	$("#form-params-generaux").submit(function(e){
+	        e.preventDefault(); 
+	        var firstname = $("#apibundle_pscustomer_firstname").val();
+	        var lastname = $("#apibundle_pscustomer_lastname").val();
+	        var email = $("#apibundle_pscustomer_email").val();
+	        var password = $("#apibundle_pscustomer_password").val();
+	        var donnees = {"id": customer.id, "firstname": firstname, "lastname": lastname, "email": email, "password": password};
+	        console.log(donnees);
+	        customer = donnees;
+	        test.customer = customer;
+	        console.log(test.customer);
+    	})
+    }
+    else {
+        $("#form-params-generaux").submit(function(e){
+            //alert("début modif");
+            e.preventDefault(); 
+            var donnees = $(this).serialize();
+            console.log(donnees);
+            $.ajax({
+                type: 'PATCH',
+                url: url+'pscustomer/'+customer.id,
+                xhrFields: {
+                    withCredentials: true
+                },
+                //data: 'apibundle_pscustomer[firstname]=test2',
+                data: donnees,
+                success: function(data) {console.log(data); customer = data; $("#resultat").html(JSON.stringify(data));},
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    $("#result").html(xhr.responseText);
+                }
+            });
+            //alert("fin modif");
+        });
+    }
+    //organiserRuches(listHives.ruches.length);
+    //masquerBd();
+    console.log('goToGeneralParameters : end');
 }
+
+function goToHiveGroupParameters() {
+	console.log('goToHiveGroupParameters : begin');
+	var template = $(templates).filter('#tpl-params-rucher').html();
+	//TODO: get idClient/idCustomer
+	//console.log(listHives.ruches.length);
+	//console.log(JSON.stringify(listHives)); 
+	//console.log(listHives.ruches[0].name);
+    var h = Mustache.render(template, hiveGroups[idHiveGroup]);
+    console.log(h);
+    document.getElementById("corps-params-rucher").innerHTML = h;
+    console.log(document.getElementById("corps-params-rucher").innerHTML);
+    console.log('goToHiveGroupParameters : before transition');
+    transition(_("pparametres-rucher"), "slide");
+    //organiserRuches(listHives.ruches.length);
+    //masquerBd();
+    console.log('goToHiveGroupParameters : end');
+}
+
+function goToHiveParameters() {
+	console.log('goToHiveParameters : begin');
+	var template = $(templates).filter('#tpl-params-ruche').html();
+	//TODO: get idClient/idCustomer
+	/*console.log(listHives.ruches.length);
+	console.log(JSON.stringify(listHives)); 
+	console.log(listHives.ruches[0].name);*/
+	//console.log(hiveGroups);
+	//console.log(hiveGroups[idHiveGroup]);
+	console.log(idHive);
+	console.log(hiveGroups[idHiveGroup].hives);
+    var h = Mustache.render(template, hiveGroups[idHiveGroup].hives[idHive]);
+    //console.log(h);
+    document.getElementById("corps-params-ruche").innerHTML = h;
+    //console.log(document.getElementById("corps-params-ruche").innerHTML);
+    console.log('goToHiveParameters : before transition');
+    transition(_("pparametres-ruche"), "slide");
+    if(isTest) {
+        console.log("coucou");
+    	$("#form-params-hive").submit(function(e){
+    	    console.log("coucou2");
+	        e.preventDefault(); 
+	        hiveGroups[idHiveGroup].hives[idHive].name = $("#apibundle_pshive_name").val();
+	        hiveGroups[idHiveGroup].hives[idHive].note = $("#apibundle_pshive_note").val();
+	        hiveGroups[idHiveGroup].hives[idHive].latitude = $("#apibundle_pshive_latitude").val();
+	        hiveGroups[idHiveGroup].hives[idHive].longitude = $("#apibundle_pshive_longitude").val();
+	        hiveGroups[idHiveGroup].hives[idHive].hiveType = $("#apibundle_pshive_hiveType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].beesType = $("#apibundle_pshive_beesType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].material = $("#apibundle_pshive_material").val();
+	        hiveGroups[idHiveGroup].hives[idHive].support = $("#apibundle_pshive_support").val();
+	        hiveGroups[idHiveGroup].hives[idHive].state = $("#apibundle_pshive_state").val();
+	        hiveGroups[idHiveGroup].hives[idHive].harvest = $("#apibundle_pshive_harvest").val();
+	        hiveGroups[idHiveGroup].hives[idHive].note= $("#apibundle_pshive_note").val();
+	        hiveGroups[idHiveGroup].hives[idHive].notes = $("#apibundle_pshive_notes").val();
+	        console.log(hiveGroups[idHiveGroup].hives[idHive]);
+    	})
+    }
+    else {
+        $("#form-params-hive").submit(function(e){
+            //alert("début modif");
+            e.preventDefault();
+            var donnees = $(this).serialize();
+            console.log(donnees);
+            $.ajax({
+                type: 'PATCH',
+                url: url+'pshive/'+hiveGroups[idHiveGroup].hives[idHive].id,
+                xhrFields: {
+                    withCredentials: true
+                },
+                //data: 'apibundle_pscustomer[firstname]=test2',
+                data: donnees,
+                success: function(data) {console.log(data); customer = data; $("#resultat").html(JSON.stringify(data));},
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.responseText);
+                    $("#result").html(xhr.responseText);
+                }
+            });
+            //alert("fin modif");
+        });
+    }
+    //organiserRuches(listHives.ruches.length);
+    //masquerBd();
+    console.log('goToHiveParameters : end');
+}
+

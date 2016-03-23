@@ -84,7 +84,7 @@
 			<div id="menu_haut">
 				<img src="img/carte.png" id="btCarte" alt="Carte" />
 				<img src="img/historique.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Historique" />
-				<img class="droite" id="btReglages" src="img/reglages.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Réglages" />
+				<img class="droite" id="btReglages" src="img/reglages.png" alt="Réglages" />
 			</div>
 			<div id="content-accueil" class="corps_accueil">
 					
@@ -104,8 +104,8 @@
 					<span id="nav_droite">></span>
 					<h1>Ruchers</h1>
 				</div>
-				<div class="contenu formulaire">
-				<h2>Supprimer</h2>
+				<div class="contenu formulaire" id="corps-params-generaux">
+				<!--<h2>Supprimer</h2>
 				<select class="liste_deroulante" name="supprimer">
 					<option>S&eacute;lectionnez un rucher</option>
 					<option>Rucher 1</option>
@@ -164,10 +164,47 @@
 					<option>Rucher 2</option>
 				</select>
 				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />-->
 				</div>
 			</div>
 		</div>
+		
+		<div class="page" id="pparametres-rucher">
+			<div id="menu_haut">
+				<img class="retour" src="img/retour.png" alt="Retour" />
+				<h1>Param&egrave;tres</h1>
+			</div>
+			<div id="bas_defilement"></div>
+			<div id="bas_triangle"></div>
+			<div class="corps">
+				<div id="sous_titre">
+					<span id="nav_gauche"><</span>
+					<span id="nav_droite">></span>
+					<h1>Ruchers</h1>
+				</div>
+				<div class="contenu formulaire" id="corps-params-rucher">
+				</div>
+			</div>
+		</div>
+		
+		<div class="page" id="pparametres-ruche">
+			<div id="menu_haut">
+				<img class="retour" src="img/retour.png" alt="Retour" />
+				<h1>Param&egrave;tres</h1>
+			</div>
+			<div id="bas_defilement"></div>
+			<div id="bas_triangle"></div>
+			<div class="corps">
+				<div id="sous_titre">
+					<span id="nav_gauche"><</span>
+					<span id="nav_droite">></span>
+					<h1>Ruchers</h1>
+				</div>
+				<div class="contenu formulaire" id="corps-params-ruche">
+				</div>
+			</div>
+		</div>
+		
 		<div class="page" id="pdetails">
 			<div id="menu_haut">
 				<img class="retour" src="img/retour.png" alt="Retour" />

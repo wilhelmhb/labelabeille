@@ -15,6 +15,15 @@
 	width:30%;
 	margin-top: 5vh;
 }
-input[type="text"], select {
+input[type="text"], select, textarea, input[type="number"], input[type="password"] {
 	width:60%;
+	margin: 5px;
+}
+form > div > div {
+	padding-left: 10%;
+	text-align: left;
+}
+label {
+    min-width: 25%;
+    display: inline-block;
 }
