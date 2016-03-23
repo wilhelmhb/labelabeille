@@ -614,11 +614,15 @@ function goToListHives(id, listHives) {
 		}
 		else {
 			console.log("on envoie la sauce");
+			var obj_array = [];
+
+			for (idx in hiveGroups[id].hives) {
+				   obj_array.push ({'index': (parseInt(idx)+1), 'data': hiveGroups[id].hives[idx]});
+			}
+
 			listHives = {
-					"ruches": hiveGroups[id].hives,
-				    "idx": function() {
-				        return idx++;
-				    }};
+				"ruches": obj_array
+			}
 			//console.log(listHives.ruches.length);
 			//console.log(JSON.stringify(listHives)); 
 			//console.log(listHives.ruches[0].name);
@@ -634,7 +638,6 @@ function goToListHives(id, listHives) {
 		    masquerBd();
 		}
 	}
-	getDataHive(listHives[i].id_hive, i, listHives[i].name, a);
 };
 function goToDataHives(name, dataHive) {
 	var template = $(templates).filter('#tpl-details').html();
@@ -646,7 +649,7 @@ function goToDataHives(name, dataHive) {
   	//console.log(dataHive);
     document.getElementById("corps").innerHTML = h;
     transition(_("pdetails"), "");
-	_("parametresRuche").addEventListener(evtclick,goToHiveParameters); 
+	_("parametresRuche").addEventListener(evtclick,goToHiveParameters);
 }
 function goToMap() {
 	//console.log("goToMap");

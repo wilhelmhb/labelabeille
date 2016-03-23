@@ -9,23 +9,23 @@
                 <div id="bas_defilement_gris"></div>
                 <div id="ruches">
                 {{#ruches}}
-                    <div id="ruche{{idx}}" class="ruche">
+                    <div id="ruche{{index}}" class="ruche">
                         <div class="fond_ruche_grise"></div>
                         <div class="fond_ruche_selectionnee"></div>
                         <div class="ruche_contenu">
                             <div class="sizing"></div>
                             <div class="ruche_selectionnee">
-                                <h1>{{name}}</h1>
-                                <img src="img/reglages.png" id="ruche_selectionnee_reglages" />
-                                <img src="img/supprimer.png" id="ruche_selectionnee_supprimer" />
-                                <img src="img/courbes.png" id="ruche_selectionnee_courbes" />
-                                <img src="img/historique.png" id="ruche_selectionnee_historique" />
-                                <div id="ruche_selectionnee_infos">
-                                    <p>Orientation : {{data.ORI.v}} degrés</p>
-                                    <p>Masse : {{data.MASSE.v}}{{data.MASSE.u}}</p>
-                                    <p>Température : {{data.TMP.v}}{{data.TMP.u}}</p>
-                                    <p>Humidité : {{data.HUM.v}}{{data.HUM.u}}</p>
-                                    <p>Luminosité : {{data.LUM.v}}{{data.LUM.u}}</p>
+                                <h1>{{data.name}}</h1>
+                                <img src="img/reglages.png" class="ruche_selectionnee_reglages" id="ruche{{index}}_selectionnee_reglages" />
+                                <img src="img/supprimer.png" class="ruche_selectionnee_supprimer" id="ruche{{index}}_selectionnee_supprimer" />
+                                <img src="img/courbes.png" class="ruche_selectionnee_courbes" id="ruche{{index}}_selectionnee_courbes" />
+                                <img src="img/historique.png" class="ruche_selectionnee_historique" id="ruche{{index}}_selectionnee_historique" />
+                                <div class="ruche_selectionnee_infos" id="ruche{{index}}_selectionnee_infos">
+                                    <p>Orientation : {{data.data.ORI.v}} degrés</p>
+                                    <p>Masse : {{data.data.MASSE.v}}{{data.data.MASSE.u}}</p>
+                                    <p>Température : {{data.data.TMP.v}}{{data.data.TMP.u}}</p>
+                                    <p>Humidité : {{data.data.HUM.v}}{{data.data.HUM.u}}</p>
+                                    <p>Luminosité : {{data.data.LUM.v}}{{data.data.LUM.u}}</p>
                                 </div>
                             </div>
                             <div class="ruche_grise">
