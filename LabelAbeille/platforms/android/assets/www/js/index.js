@@ -493,7 +493,7 @@ function getListHives(id, action) {
 		    enCharge=false;
 		    hiveGroups[idHiveGroup].hives = test.hives;
 			_("ch").style.visibility="hidden";
-			action(test.hives);
+			action(id, test.hives);
 		}
 		else {
             $.ajax({
@@ -506,7 +506,7 @@ function getListHives(id, action) {
                 success: function(data) {
 				    enCharge=false;
 				    _("ch").style.visibility="hidden";
-                    //console.log(JSON.stringify(data)); 
+                    console.log(data); 
                     //$("#resultat").html(JSON.stringify(data));
 				    hiveGroups[id].hives = data;
                     action(id, data);
@@ -531,7 +531,7 @@ function getDataHive(id, id2, name, action) {
 				    idHive = i;
 				    console.log(i);
 			    	dataHive = test.hives[i].data;
-			        action(name, test.hives[i].data);
+			        action(i, name, test.hives[i].data);
 			    }
 			}
 		}
@@ -585,6 +585,14 @@ function connect() {
         	connexion(user, login, connexion_success, connexion_failure);
 		}
     });
+	$("#tester_appli").on(evtclick, function(){
+		if(!enCharge){
+			var user = null;
+			var login = null;
+			isTest = true;
+        	connexion(user, login, connexion_success, connexion_failure);
+		}
+    });
 };
 function connexion_failure() {
 	afficherBd("Erreur de connexion","REESSAYER");
@@ -597,15 +605,14 @@ function connexion_success() {
 	});
 }
 function goToListHives(id, listHives) {
-	//console.log('goToListHives : begin');
+	console.log('goToListHives : begin');
 	var template = $(templates).filter('#tpl-accueil').html();
 	var idx = 1;
 	hiveGroups[id].hives = listHives;
 	var i = 0;
 	function a(j, name, data) {
-		/*console.log(data);
+		console.log(data);
 		console.log(hiveGroups[id].hives);
-		console.log(k);*/
 		console.log(j);
 		hiveGroups[id].hives[j].data = data;
 		if(j+2<hiveGroups[id].hives.length) {
