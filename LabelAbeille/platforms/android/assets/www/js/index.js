@@ -443,12 +443,11 @@ function organiserRuches(nbRuches){
 			if(!enCharge){
 				var k = this.getElementsByTagName("h2")[0].textContent;
 				var n = this.getElementsByTagName("h1")[0].textContent;
-				//console.log(k);
 				console.log("aller à la ruche : "+n);
 				k = k.substring(1, k.length-1);
 				//console.log(k);
 				rucheSelect=k;
-				getDataHive(k, n, goToDataHives);
+				getDataHive(k, this.id.split('ruche')[1]-1, n, goToDataHives);
 			}			
 		});
 	}
@@ -628,7 +627,7 @@ function getListHives(action) {
         }
 }
 /* récupération des données d'une ruche */
-function getDataHive(id, name, action) {
+function getDataHive(id, id2, name, action) {
 		enCharge=true;
 		//$.support.cors = true;
 		//$.mobile.allowCrossDomainPages = true;
@@ -657,8 +656,8 @@ function getDataHive(id, name, action) {
                 },
                 success: function(data) {
 				    enCharge=false;
-				    idHive = id;
-			    	dataHive = hiveGroups[idHiveGroup].hives[idHive].data;
+				    idHive = id2;
+			    	dataHive = data;
 				    _("ch").style.visibility="hidden";
 				    //console.log(id);
                 	//console.log(JSON.stringify(data)); 
@@ -990,9 +989,6 @@ function goToHiveParameters() {
 	console.log('goToHiveParameters : begin');
 	var template = $(templates).filter('#tpl-params-ruche').html();
 	//TODO: get idClient/idCustomer
-	/*console.log(listHives.ruches.length);
-	console.log(JSON.stringify(listHives)); 
-	console.log(listHives.ruches[0].name);*/
 	//console.log(hiveGroups);
 	//console.log(hiveGroups[idHiveGroup]);
 	console.log(idHive);
