@@ -655,12 +655,31 @@ function goToListHives(id, listHives) {
 		    //console.log(h);
 		    document.getElementById("content-accueil").innerHTML = h;
 		    //console.log(document.getElementById("paccueil").innerHTML);
-		    //console.log('goToListHives : before transition');
+		    console.log('goToListHives : before transition');
 		    transition(_("paccueil"), "slide");
 		    accueil(listHives.ruches.length);
+		    for(var k=1; k<=listHives.ruches.length; k++) {
+		    	console.log(k);
+		    	$("ruche"+k+"_selectionnee_reglages").click(function(e) {
+		    		e.preventDefault();
+		    		console.log($(".ruche_selectionnee_reglages").index());
+		    		idHive = k-1;
+		    		goToHiveParameters();
+		    	});
+		    	$("#ruche"+k).on('click', function(e) {
+		    		e.preventDefault();
+		    		console.log($(this)[0].id);
+		    		var k = $(this)[0].id.split("ruche")[1];
+		    		idHive = k-1;
+		    		hive = hiveGroups[id].hives[k-1].data;
+		    		name = hiveGroups[id].hives[k-1].name;
+		    		goToDataHives(name, hive);
+		    	});
+		    }
 		    masquerBd();
 		}
 	}
+	getDataHive(listHives[0].id_hive, 0, listHives[0].name, a);
 };
 function goToDataHives(name, dataHive) {
 	var template = $(templates).filter('#tpl-details').html();
@@ -924,6 +943,7 @@ function goToHiveParameters() {
 	        hiveGroups[idHiveGroup].hives[idHive].note= $("#apibundle_pshive_note").val();
 	        hiveGroups[idHiveGroup].hives[idHive].notes = $("#apibundle_pshive_notes").val();
 	        console.log(hiveGroups[idHiveGroup].hives[idHive]);
+	        goToDataHives(hiveGroups[idHiveGroup].hives[idHive].name, hiveGroups[idHiveGroup].hives[idHive].data);
     	})
     }
     else {
