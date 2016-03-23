@@ -329,69 +329,6 @@ function debut(){
 		 templates=t;
 		 templateCharge=true;
 	 },'html');
-    /*templates='<meta http-equiv="Access-Control-Allow-Origin" content="*">'+
-    '<script type="text/html" id="tpl-accueil">'+
-    '<div id="sous_titre">'+
-    '<span id="nav_gauche"></span>'+
-    '<span id="nav_droite"></span>'+
-    '<h1>Mon rucher</h1>'+
-    '<div style="clear:both;"></div>'+
-    '</div>'+
-    '<div id="bas_defilement_gris"></div>'+
-    '<div id="ruches">'+
-    '{{#ruches}}'+
-    '<div id="ruche{{idx}}" class="ruche_grise">'+
-    '<div class="sizing"></div>'+
-    '<h2>[{{idRuche}}]</h2>'+
-    '<h1>{{nom}}</h1>'+
-    '<div style="clear:left;"></div>'+
-    '</div>'+
-    '{{/ruches}}'+
-    '</div>'+
-    '<div style="clear:both;"></div>'+
-    '</script>'+
-    '<script type="text/html" id="tpl-details">'+
-    '<div id="sous_titre">'+
-    '<span id="nav_gauche"></span>'+
-    '<span id="nav_droite"></span>'+
-    '<h1>{{nom}} <span></span></h1>'+
-    '</div>'+
-    '<div id="details-content" class="contenu">'+
-    '<div id="menudetails">'+
-    '<img style="opacity:0.3;filter:alpha(opacity = 0.3)" src="img/details/courbes.png" alt="Courbes" />'+
-    '<img style="opacity:0.3;filter:alpha(opacity = 0.3)" src="img/details/historique.png" class="milieu" alt="Historique" />'+
-    '<img style="opacity:0.3;filter:alpha(opacity = 0.3)" id="parametresRuche" src="img/details/parametres.png" alt="Param&egrave;tres" />'+
-    '</div>'+
-    '<div id="details">'+
-    '<div class="sizing"></div>'+
-    '<div id="bloc1">'+
-	'			<h1>Informations</h1>'+
-	'			<p>Orientation : {{ori.v}}</p>'+
-	'			<p>Capteur : reli&eacute;</p>'+
-	'			<p>Rucher : 2.1</p>'+
-    '</div>'+
-    '<div id="bloc2">'+
-	'			<h1>Miel</h1>'+
-	'			<h2>Derni&egrave;re r&eacute;colte</h2>'+
-	'			<p>{{recolte.v}}{{recolte.u}} le {{recolte.h}}</p>'+
-	'			<p>Estimation miel : {{miel.v}}{{miel.u}}</p'+
-    '</div'+
-    '<div id="bloc3">'+
-	'			<h1>Atmosph&egrave;re</h1>'+
-	'			<p>Temp&eacute;rature : {{tmp.v}}{{tmp.u}}</p>'+
-	'			<p>Humidit&eacute; : {{hum.v}}{{hum.u}}</p>'+
-    '</div>'+
-    '<div id="bloc4">'+
-	'			<h1>Masse</h1>'+
-	'			<p>Essaim : {{essaim.v}}{{essaim.u}}</p>'+
-	'			<p>Ruche : {{masse.v}}{{masse.u}}</p>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</script>';
-    templateCharge=true;*/
-	 //_("check1").addEventListener(evtclick, function(){check(1);});
-	 //checkb[1]=true;
 }
 function charger(){
  if(pcharge<100)pcharge++;
@@ -402,56 +339,7 @@ function charger(){
 	 connect();
  }
 }
-function organiserRuches(nbRuches){
-	//console.log(nbRuches);
-	var h,w;
-	//console.log(_("ruche1").offsetHeight);
-	if(_("ruche1").offsetHeight != null) {
-		//console.log('ok');
-		h = _("ruche1").offsetHeight;
-	}
-	else {
-		//console.log(_("ruche1").pixelHeight != null);
-		if(_("ruche1").style.pixelHeight) {
-			h = _("ruche1").style.pixelHeight;
-		}
-		else {
-			//console.log("ProblèmeH");
-		}
-	}
-	//console.log(_("ruche1").offsetWidth);
-	if(_("ruche1").offsetWidth != null) {
-		w = _("ruche1").offsetWidth;
-	}
-	else {
-		//console.log(_("ruche1").pixelWidth);
-		if(_("ruche1").style.pixelWidth != null){
-			w = _("ruche1").style.pixelWidth;
-		}
-		else {
-			//console.log("ProblèmeW");
-		}
-	}
-	//console.log(h+","+w);
-	for(i=2; i<=nbRuches; i++){
-		_("ruche"+i).style.top = h*(0.76*(i-1))+'px';
-		_("ruche"+i).style.left = w*(0.5*((i%2==0)?1:0))+'px';
-		//console.log(_("ruche"+i).style);
-	}
-	for(i=1; i<=nbRuches; i++){
-		_("ruche"+i).addEventListener(evtclick,function(){
-			if(!enCharge){
-				var k = this.getElementsByTagName("h2")[0].textContent;
-				var n = this.getElementsByTagName("h1")[0].textContent;
-				console.log("aller à la ruche : "+n);
-				k = k.substring(1, k.length-1);
-				//console.log(k);
-				rucheSelect=k;
-				getDataHive(k, this.id.split('ruche')[1]-1, n, goToDataHives);
-			}			
-		});
-	}
-}
+
 function parametresRuche(){
 	transition(_("pparametres"),"");
 }

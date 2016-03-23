@@ -6,6 +6,13 @@ body {
 	border:none;
 	position:relative;
 }
+#ayggtpp{
+	width:330px;
+	height:700px;
+	border:5px solid black;
+	margin:auto;
+	position:relative;
+}
 .fond_gris{
 	background:url('../img/fond_gris.png');
 	background-size: 100% 100%;
@@ -14,23 +21,22 @@ body {
 .bouton{
 	cursor:pointer;
 	background:url('../img/bouton.png');
-	max-width:200px;
+	width:64px;
+	height:31px;
+	padding-top:19px;
 	color: #282828;
 	background-size: 100%;
 	margin:auto;
 	background-repeat: no-repeat;
 	position:relative;
 }
-.bouton p{padding-top:100%;}
 .bouton span{
-	position:absolute;
 	z-index:3;
 	text-align:center;
+	display:block;
 	width:100%;
-	top:calc(50% - 14pt);
-	left:0;
 	font-family:'open_sanslight';
-	font-size:12px;
+	font-size:11px;
 }
 #ch{
     background:rgba(0,0,0,0.7);
@@ -44,7 +50,7 @@ body {
 	width:100%;
 	height:100%;
 	position:fixed;
-	z-index:100;
+	z-index:200;
 }
 #boite{
 	background:url('../img/boite-dialogue.png');
@@ -55,11 +61,11 @@ body {
 	margin:auto;
 	margin-top: 30vh;
 	font-family:'open_sanslight';
-	font-size:3vw;
+	font-size:3.5vw;
 	color:#343434;
 	padding:5%;
 }
-#boite .bouton {width:25%;margin-top:10px;}
+#boite .bouton {margin-top:10px;}
 #menu_haut{
 	background:url('../img/barre_haut.png');
 	background-size:100% 100%;
@@ -137,7 +143,10 @@ body {
 	width:100%;
 	background:url('../img/defilement_bas.png');
 	background-size:100% 100%;
-	height:70px;
+	height:30px;
+	z-index:10;
+	position:absolute;
+	bottom:0;
 }
 #bas_defilement {
 	width:100%;
