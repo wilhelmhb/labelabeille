@@ -2,27 +2,32 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="310" key="DIALOG_WIDTH"/>
-		<item value="71" key="DIALOG_Y_ORIGIN"/>
-		<item value="492" key="DIALOG_HEIGHT"/>
-		<item value="858" key="DIALOG_X_ORIGIN"/>
+		<item value="64" key="DIALOG_Y_ORIGIN"/>
+		<item value="1131" key="DIALOG_X_ORIGIN"/>
+		<item value="548" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="console" key="selection"/>
+		<item value="idx" key="selection"/>
 		<list key="findhistory">
-			<item value="console"/>
-			<item value="btBd"/>
-			<item value="btBd_txt"/>
-			<item value="blue"/>
-			<item value="supportsRtl"/>
-			<item value="support"/>
+			<item value="idx"/>
+			<item value="parametresruche"/>
+			<item value="&lt;input type=&quot;submit&quot; "/>
+			<item value="&lt;input type=&quot;text&quot; "/>
+			<item value="&lt;input ype=&quot;text&quot; "/>
+			<item value="&lt;select"/>
+			<item value="parametres"/>
+			<item value="btRe"/>
 		</list>
 		<list key="replacehistory">
+			<item value="&lt;input class=&quot;bouton&quot; type=&quot;submit&quot; "/>
+			<item value="&lt;input class=&quot;zone_texte&quot; type=&quot;text&quot; "/>
+			<item value="&lt;select class=&quot;liste_deroulante&quot; "/>
 		</list>
 	</section>
 </section>
