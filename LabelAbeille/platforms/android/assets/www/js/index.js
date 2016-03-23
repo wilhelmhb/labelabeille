@@ -486,7 +486,7 @@ function connexion(user, passwd, success, failure) {
         }
 }
 /* récupération de la liste des ruches */
-function getListHives(action) {
+function getListHives(id, action) {
 		enCharge=true;
 		_("ch").style.visibility="visible";
 		if(isTest) {
@@ -508,8 +508,8 @@ function getListHives(action) {
 				    _("ch").style.visibility="hidden";
                     //console.log(JSON.stringify(data)); 
                     //$("#resultat").html(JSON.stringify(data));
-				    hiveGroups[idHiveGroup].hives = data;
-                    action(data);
+				    hiveGroups[id].hives = data;
+                    action(id, data);
                 },
             });
         }
@@ -521,6 +521,7 @@ function getDataHive(id, id2, name, action) {
 		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
 		console.log('on prend les données de la ruche '+name+" et id "+id);
+		//console.log(action);
 		if(isTest) {
 			enCharge=false;
 			_("ch").style.visibility="hidden";
@@ -547,11 +548,11 @@ function getDataHive(id, id2, name, action) {
 				    idHive = id2;
 			    	dataHive = data;
 				    _("ch").style.visibility="hidden";
-				    //console.log(id);
+				    console.log(id2);
                 	//console.log(JSON.stringify(data)); 
 				    //console.log(JSON.stringify(data["param.poids_essaim"])); 
                 	//$("#resultat").html(JSON.stringify(data));
-                	action(name, data);
+                	action(id2, name, data);
                 }
             });
         }
@@ -590,58 +591,50 @@ function connexion_failure() {
 }
 function connexion_success() {
 	afficherBd("Vous êtes connecté. Vous allez être redirigé vers la liste de vos ruches dans quelques instants. Si ce n'est pas le cas, cliquez sur le bouton ci-dessous.", "Aller à la liste des ruches");
-	getListHives(goToListHives);
+	getListHives(idHiveGroup, goToListHives);
 	_("btBd").addEventListener(evtclick, function (){
-		getListHives(
-			function(listHives){
-				//console.log(listHives);
-				enCharge=false;
-				_("ch").style.visibility="hidden";
-				var template = $(templates).filter('#tpl-accueil').html();
-				var idx = 1;
-				listHives = {
-						"ruches": listHives,
-					    "idx": function() {
-					        return idx++;
-					    }};
-				//console.log(listHives.ruches.length);
-				//console.log(JSON.stringify(listHives)); 
-			    var h = Mustache.render(template, listHives);
-			    //console.log(h);
-			    document.getElementById("content-accueil").innerHTML = h;
-			    //console.log(document.getElementById("paccueil").innerHTML);
-			    organiserRuches(listHives.ruches.length);
-			    //console.log('goToListHives : befire transition');
-			    _("container").innerHTML = "";
-			    //console.log(_("container").innerHTML);
-			    $("#container").append(_("paccueil"));
-			    masquerBd();
-			    //console.log('goToListHives : end');
-			}
-		);
+		getListHives(idHiveGroup, goToListHives);
 	});
 }
-function goToListHives(listHives) {
+function goToListHives(id, listHives) {
 	//console.log('goToListHives : begin');
 	var template = $(templates).filter('#tpl-accueil').html();
 	var idx = 1;
-	listHives = {
-			"ruches": listHives,
-		    "idx": function() {
-		        return idx++;
-		    }};
-	//console.log(listHives.ruches.length);
-	//console.log(JSON.stringify(listHives)); 
-	//console.log(listHives.ruches[0].name);
-    var h = Mustache.render(template, listHives);
-    //console.log(h);
-    document.getElementById("content-accueil").innerHTML = h;
-    //console.log(document.getElementById("paccueil").innerHTML);
-    //console.log('goToListHives : before transition');
-    transition(_("paccueil"), "slide");
-    organiserRuches(listHives.ruches.length);
-    masquerBd();
-    //console.log('goToListHives : end');
+	hiveGroups[id].hives = listHives;
+	var i = 0;
+	function a(j, name, data) {
+		/*console.log(data);
+		console.log(hiveGroups[id].hives);
+		console.log(k);*/
+		console.log(j);
+		hiveGroups[id].hives[j].data = data;
+		if(j+2<hiveGroups[id].hives.length) {
+			console.log(data);
+			getDataHive(listHives[j+1].id_hive, j+1, listHives[j+1].name, a);
+		}
+		else {
+			console.log("on envoie la sauce");
+			listHives = {
+					"ruches": hiveGroups[id].hives,
+				    "idx": function() {
+				        return idx++;
+				    }};
+			//console.log(listHives.ruches.length);
+			//console.log(JSON.stringify(listHives)); 
+			//console.log(listHives.ruches[0].name);
+			console.log(listHives);
+			
+		    var h = Mustache.render(template, listHives);
+		    //console.log(h);
+		    document.getElementById("content-accueil").innerHTML = h;
+		    //console.log(document.getElementById("paccueil").innerHTML);
+		    //console.log('goToListHives : before transition');
+		    transition(_("paccueil"), "slide");
+		    accueil(listHives.ruches.length);
+		    masquerBd();
+		}
+	}
+	getDataHive(listHives[i].id_hive, i, listHives[i].name, a);
 };
 function goToDataHives(name, dataHive) {
 	var template = $(templates).filter('#tpl-details').html();
