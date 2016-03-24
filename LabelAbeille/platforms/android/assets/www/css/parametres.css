@@ -14,6 +14,7 @@
 .formulaire .bouton{
 	width:30%;
 	margin-top: 5vh;
+	min-height: 50px;
 }
 input[type="text"], select, textarea, input[type="number"], input[type="password"] {
 	width:60%;

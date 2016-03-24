@@ -42,16 +42,16 @@ var test = {
             "id_hive":6,
             "id_client":11,
             "id_hive_group":18,
-            "name":"RUCHE.6",
+            "name":"RUCHE.1",
             "note": "",
             "latitude":0,
             "longitude":0,
             "active":true,
-            "hive_type":"dadant",
-            "bees_type":"buckfast",
-            "material":"wood",
+            "hive_type":"Type de ruche",
+            "bees_type":"Espèce d'abeille",
+            "material":"Bois",
             "support":"steel_frame",
-            "state":"bad",
+            "state":"Bon",
             "harvest":20,
             "notes":"",
             "date_add":"2016-01-18T14:03:22+0100",
@@ -95,10 +95,22 @@ var test = {
                 "VOL":{"v":"Présent","h":"08\/03\/2016 08:29:36","u":""}}
         },
         {
-            "id_hive":22,"id_client":11,"id_hive_group":18,"name":"RUCHE.10","latitude":0,"longitude":0,
-            "active":true,"hive_type":"dadant","bees_type":"buckfast","material":"wood", "note": "",
-            "support":"steel_frame","state":"bad","harvest":0,"notes":"",
-            "date_add":"2016-03-08T15:46:32+0100","date_upd":"2016-03-08T15:46:32+0100", 
+            "id_hive":22,
+            "id_client":11,
+            "id_hive_group":18,
+            "name":"RUCHE.2",
+            "note": "",
+            "latitude":0,
+            "longitude":0,
+            "active":true,
+            "hive_type":"Type de ruche",
+            "bees_type":"Espèce d'abeille",
+            "material":"Bois",
+            "support":"steel_frame",
+            "state":"Bon",
+            "harvest":0,"notes":"",
+            "date_add":"2016-03-08T15:46:32+0100",
+            "date_upd":"2016-03-08T15:46:32+0100", 
             "data": {
                 "BAT":{"v":"3.477","h":"22\/03\/2016 09:53:04","u":"V"},
                 "DEF.DEF_BATTERIE_MIN":{"v":"Absent","h":"22\/03\/2016 14:09:00","u":""},
@@ -141,15 +153,16 @@ var test = {
             "id_hive":23,
             "id_client":11,
             "id_hive_group":18,
-            "name":"RUCHE.11",
+            "name":"RUCHE.3",
+            "note": "",
             "latitude":0,
             "longitude":0,
             "active":true,
-            "hive_type":"dadant",
-            "bees_type":"buckfast",
-            "material":"wood",
+            "hive_type":"Type de ruche",
+            "bees_type":"Espèce d'abeille",
+            "material":"Bois",
             "support":"steel_frame",
-            "state":"bad",
+            "state":"Bon",
             "harvest":0,
             "note":"",
             "notes":"",
@@ -198,15 +211,16 @@ var test = {
             "id_hive":24,
             "id_client":11,
             "id_hive_group":18,
-            "name":"MaRuche",
+            "name":"RUCHE.4",
+            "note": "",
             "latitude":0,
             "longitude":0,
-            "active":false,
-            "hive_type":"test",
-            "bees_type":"test",
-            "material":"test",
-            "support":"test",
-            "state":"test",
+            "active":true,
+            "hive_type":"Type de ruche",
+            "bees_type":"Espèce d'abeille",
+            "material":"Bois",
+            "support":"steel_frame",
+            "state":"Bon",
             "harvest":1,
             "note":"",
             "date_add":"2011-01-01T00:00:00+0100",
@@ -484,7 +498,7 @@ function connexion(user, passwd, success, failure) {
                 success: function(data) {
 				    enCharge=false;
 				    _("ch").style.visibility="hidden";
-                	console.log(JSON.stringify(data)); 
+                	//console.log(JSON.stringify(data)); 
                 	//$("#result").html(data+'');
                 	customer = data;
                 	success();
@@ -522,7 +536,7 @@ function getListHives(id, action) {
                 success: function(data) {
 				    enCharge=false;
 				    _("ch").style.visibility="hidden";
-                    console.log(data); 
+                    //console.log(data); 
                     //$("#resultat").html(JSON.stringify(data));
 				    hiveGroups[id].hives = data;
                     action(id, data);
@@ -536,16 +550,16 @@ function getDataHive(id, id2, name, action) {
 		//$.support.cors = true;
 		//$.mobile.allowCrossDomainPages = true;
 		_("ch").style.visibility="visible";
-		console.log('on prend les données de la ruche '+name+" et id "+id);
+		//console.log('on prend les données de la ruche '+name+" et id "+id);
 		//console.log(action);
 		if(isTest) {
 			enCharge=false;
 			_("ch").style.visibility="hidden";
 			for(var i = 0; i< test.hives.length; i++) {
-				console.log(test.hives[i].id_hive);
+				//console.log(test.hives[i].id_hive);
 			    if(test.hives[i].id_hive == id) {
 				    idHive = i;
-				    console.log(i);
+				    //console.log(i);
 			    	dataHive = test.hives[i].data;
 			        action(i, name, test.hives[i].data);
 			    }
@@ -564,7 +578,7 @@ function getDataHive(id, id2, name, action) {
 				    idHive = id2;
 			    	dataHive = data;
 				    _("ch").style.visibility="hidden";
-				    console.log(id2);
+				    //console.log(id2);
                 	//console.log(JSON.stringify(data)); 
 				    //console.log(JSON.stringify(data["param.poids_essaim"])); 
                 	//$("#resultat").html(JSON.stringify(data));
@@ -588,8 +602,8 @@ function getHivesCoordinates(action) {
         }
     });
 };
-var url1 = 'https://api.label-abeille.org/';
-var url = 'http://localhost/Symfony2/api_labelabeille_reduite/web/app_dev.php/';
+var url = 'https://api.label-abeille.org/';
+var url_test = 'http://localhost/Symfony2/api_labelabeille_reduite/web/app_dev.php/';
 /* fonction qui récupère et traite les données de connexion */
 function connect() {
 	$("#valider_connexion").on(evtclick, function(){
@@ -621,22 +635,21 @@ function connexion_success() {
 	});
 }
 function goToListHives(id, listHives) {
-	console.log('goToListHives : begin');
+	//console.log('goToListHives : begin');
 	var template = $(templates).filter('#tpl-accueil').html();
 	var idx = 1;
 	hiveGroups[id].hives = listHives;
 	var i = 0;
 	function a(j, name, data) {
-		console.log(data);
+		/*console.log(data);
 		console.log(hiveGroups[id].hives);
-		console.log(j);
+		console.log(j);*/
 		hiveGroups[id].hives[j].data = data;
-		if(j+2<hiveGroups[id].hives.length) {
-			console.log(data);
+		if(j+1<hiveGroups[id].hives.length) {
+			//console.log(data);
 			getDataHive(listHives[j+1].id_hive, j+1, listHives[j+1].name, a);
 		}
 		else {
-			console.log("on envoie la sauce");
 			var obj_array = [];
 
 			for (idx in hiveGroups[id].hives) {
@@ -649,26 +662,26 @@ function goToListHives(id, listHives) {
 			//console.log(listHives.ruches.length);
 			//console.log(JSON.stringify(listHives)); 
 			//console.log(listHives.ruches[0].name);
-			console.log(listHives);
+			//console.log(listHives);
 			
 		    var h = Mustache.render(template, listHives);
 		    //console.log(h);
 		    document.getElementById("content-accueil").innerHTML = h;
 		    //console.log(document.getElementById("paccueil").innerHTML);
-		    console.log('goToListHives : before transition');
+		    //console.log('goToListHives : before transition');
 		    transition(_("paccueil"), "slide");
 		    accueil(listHives.ruches.length);
 		    for(var k=1; k<=listHives.ruches.length; k++) {
-		    	console.log(k);
+		    	//console.log(k);
 		    	$("ruche"+k+"_selectionnee_reglages").click(function(e) {
 		    		e.preventDefault();
-		    		console.log($(".ruche_selectionnee_reglages").index());
+		    		//console.log($(".ruche_selectionnee_reglages").index());
 		    		idHive = k-1;
 		    		goToHiveParameters();
 		    	});
 		    	$("#ruche"+k).on('click', function(e) {
 		    		e.preventDefault();
-		    		console.log($(this)[0].id);
+		    		//console.log($(this)[0].id);
 		    		var k = $(this)[0].id.split("ruche")[1];
 		    		idHive = k-1;
 		    		hive = hiveGroups[id].hives[k-1].data;
@@ -843,16 +856,16 @@ function initializeMap(hiveCoordinates) {
 };
 
 function goToGeneralParameters() {
-	console.log('goToGeneralParameters : begin');
+	//console.log('goToGeneralParameters : begin');
 	var template = $(templates).filter('#tpl-params-generaux').html();
 	/*console.log(listHives.ruches.length);
 	console.log(JSON.stringify(listHives)); 
 	console.log(listHives.ruches[0].name);*/
     var h = Mustache.render(template, customer);
     document.getElementById("corps-params-generaux").innerHTML = h;
-    console.log('goToGeneralParameters : before transition');
+    //console.log('goToGeneralParameters : before transition');
     transition(_("pparametres"), "slide");
-    console.log(customer.id);
+    //console.log(customer.id);
     if(isTest) {
     	$("#form-params-generaux").submit(function(e){
 	        e.preventDefault(); 
@@ -861,10 +874,10 @@ function goToGeneralParameters() {
 	        var email = $("#apibundle_pscustomer_email").val();
 	        var password = $("#apibundle_pscustomer_password").val();
 	        var donnees = {"id": customer.id, "firstname": firstname, "lastname": lastname, "email": email, "password": password};
-	        console.log(donnees);
+	        //console.log(donnees);
 	        customer = donnees;
 	        test.customer = customer;
-	        console.log(test.customer);
+	        //console.log(test.customer);
             goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
     	})
     }
@@ -873,7 +886,7 @@ function goToGeneralParameters() {
             //alert("début modif");
             e.preventDefault(); 
             var donnees = $(this).serialize();
-            console.log(donnees);
+            //console.log(donnees);
             $.ajax({
                 type: 'PATCH',
                 url: url+'pscustomer/'+customer.id,
@@ -883,7 +896,7 @@ function goToGeneralParameters() {
                 //data: 'apibundle_pscustomer[firstname]=test2',
                 data: donnees,
                 success: function(data) {
-                	console.log(data); 
+                	//console.log(data); 
                 	customer = data; 
                 	//$("#resultat").html(JSON.stringify(data));
                     customer.firstname = $("#apibundle_pscustomer_firstname").val();
@@ -893,8 +906,8 @@ function goToGeneralParameters() {
                     goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.responseText);
-                    $("#result").html(xhr.responseText);
+                    //console.log(xhr.responseText);
+                    //$("#result").html(xhr.responseText);
                 }
             });
             //alert("fin modif");
@@ -902,45 +915,44 @@ function goToGeneralParameters() {
     }
     //organiserRuches(listHives.ruches.length);
     //masquerBd();
-    console.log('goToGeneralParameters : end');
+    //console.log('goToGeneralParameters : end');
 }
 
 function goToHiveGroupParameters() {
-	console.log('goToHiveGroupParameters : begin');
+	//console.log('goToHiveGroupParameters : begin');
 	var template = $(templates).filter('#tpl-params-rucher').html();
-	//TODO: get idClient/idCustomer
 	//console.log(listHives.ruches.length);
 	//console.log(JSON.stringify(listHives)); 
 	//console.log(listHives.ruches[0].name);
     var h = Mustache.render(template, hiveGroups[idHiveGroup]);
-    console.log(h);
+    //console.log(h);
     document.getElementById("corps-params-rucher").innerHTML = h;
-    console.log(document.getElementById("corps-params-rucher").innerHTML);
-    console.log('goToHiveGroupParameters : before transition');
+    //console.log(document.getElementById("corps-params-rucher").innerHTML);
+    //console.log('goToHiveGroupParameters : before transition');
     transition(_("pparametres-rucher"), "slide");
     //organiserRuches(listHives.ruches.length);
     //masquerBd();
-    console.log('goToHiveGroupParameters : end');
+    //console.log('goToHiveGroupParameters : end');
 }
 
 function goToHiveParameters() {
-	console.log('goToHiveParameters : begin');
+	//console.log('goToHiveParameters : begin');
 	var template = $(templates).filter('#tpl-params-ruche').html();
 	//TODO: get idClient/idCustomer
 	//console.log(hiveGroups);
 	//console.log(hiveGroups[idHiveGroup]);
-	console.log(idHive);
-	console.log(hiveGroups[idHiveGroup].hives);
+	//console.log(idHive);
+	//console.log(hiveGroups[idHiveGroup].hives);
     var h = Mustache.render(template, hiveGroups[idHiveGroup].hives[idHive]);
     //console.log(h);
     document.getElementById("corps-params-ruche").innerHTML = h;
     //console.log(document.getElementById("corps-params-ruche").innerHTML);
-    console.log('goToHiveParameters : before transition');
+    //console.log('goToHiveParameters : before transition');
     transition(_("pparametres-ruche"), "slide");
     if(isTest) {
-        console.log("coucou");
+        //console.log("coucou");
     	$("#form-params-hive").submit(function(e){
-    	    console.log("coucou2");
+    	    //console.log("coucou2");
 	        e.preventDefault(); 
 	        hiveGroups[idHiveGroup].hives[idHive].name = $("#apibundle_pshive_name").val();
 	        hiveGroups[idHiveGroup].hives[idHive].note = $("#apibundle_pshive_note").val();
@@ -954,7 +966,7 @@ function goToHiveParameters() {
 	        hiveGroups[idHiveGroup].hives[idHive].harvest = $("#apibundle_pshive_harvest").val();
 	        hiveGroups[idHiveGroup].hives[idHive].note= $("#apibundle_pshive_note").val();
 	        hiveGroups[idHiveGroup].hives[idHive].notes = $("#apibundle_pshive_notes").val();
-	        console.log(hiveGroups[idHiveGroup].hives[idHive]);
+	        //console.log(hiveGroups[idHiveGroup].hives[idHive]);
 	        goToDataHives(hiveGroups[idHiveGroup].hives[idHive].name, hiveGroups[idHiveGroup].hives[idHive].data);
     	})
     }
@@ -963,7 +975,7 @@ function goToHiveParameters() {
             //alert("début modif");
             e.preventDefault();
             var donnees = $(this).serialize();
-            console.log(donnees);
+            //console.log(donnees);
             $.ajax({
                 type: 'PATCH',
                 url: url+'pshive/'+hiveGroups[idHiveGroup].hives[idHive].id,
@@ -973,13 +985,13 @@ function goToHiveParameters() {
                 //data: 'apibundle_pscustomer[firstname]=test2',
                 data: donnees,
                 success: function(data) {
-                	console.log(data); 
+                	//console.log(data); 
                 	customer = data; 
                 	//$("#resultat").html(JSON.stringify(data));
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.responseText);
-                    $("#result").html(xhr.responseText);
+                    //console.log(xhr.responseText);
+                    //$("#result").html(xhr.responseText);
                 }
             });
             /* modification en local */
@@ -995,7 +1007,7 @@ function goToHiveParameters() {
 	        hiveGroups[idHiveGroup].hives[idHive].harvest = $("#apibundle_pshive_harvest").val();
 	        hiveGroups[idHiveGroup].hives[idHive].note= $("#apibundle_pshive_note").val();
 	        hiveGroups[idHiveGroup].hives[idHive].notes = $("#apibundle_pshive_notes").val();
-	        console.log(hiveGroups[idHiveGroup].hives[idHive]);
+	        //console.log(hiveGroups[idHiveGroup].hives[idHive]);
 	        /* on retourne aux détails */
 	        goToDataHives(hiveGroups[idHiveGroup].hives[idHive].name, hiveGroups[idHiveGroup].hives[idHive].data);
             //alert("fin modif");
@@ -1003,6 +1015,6 @@ function goToHiveParameters() {
     }
     //organiserRuches(listHives.ruches.length);
     //masquerBd();
-    console.log('goToHiveParameters : end');
+    //console.log('goToHiveParameters : end');
 }
 
