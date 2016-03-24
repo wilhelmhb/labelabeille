@@ -327,7 +327,7 @@ function debut(){
 		return false;
 	});
 	_("retour_params_ruche").addEventListener(evtclick,function(){
-		goToDataHive(
+		goToDataHives(
 	    		hiveGroups[idHiveGroup].hives[idHive].data,
 	    		hiveGroups[idHiveGroup].hives[idHive].name);
 	});
@@ -691,7 +691,10 @@ function goToDataHives(name, dataHive) {
   	//console.log(dataHive);
     document.getElementById("corps").innerHTML = h;
     transition(_("pdetails"), "");
-	_("parametresRuche").addEventListener(evtclick,goToHiveParameters);
+    if(isTest) {
+    	_("parametresRuche").style = "";
+    	_("parametresRuche").addEventListener(evtclick,goToHiveParameters);
+    }
 }
 function goToMap() {
 	//console.log("goToMap");
@@ -842,7 +845,6 @@ function initializeMap(hiveCoordinates) {
 function goToGeneralParameters() {
 	console.log('goToGeneralParameters : begin');
 	var template = $(templates).filter('#tpl-params-generaux').html();
-	//TODO: get idClient/idCustomer
 	/*console.log(listHives.ruches.length);
 	console.log(JSON.stringify(listHives)); 
 	console.log(listHives.ruches[0].name);*/
@@ -863,6 +865,7 @@ function goToGeneralParameters() {
 	        customer = donnees;
 	        test.customer = customer;
 	        console.log(test.customer);
+            goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
     	})
     }
     else {
@@ -879,7 +882,16 @@ function goToGeneralParameters() {
                 },
                 //data: 'apibundle_pscustomer[firstname]=test2',
                 data: donnees,
-                success: function(data) {console.log(data); customer = data; $("#resultat").html(JSON.stringify(data));},
+                success: function(data) {
+                	console.log(data); 
+                	customer = data; 
+                	//$("#resultat").html(JSON.stringify(data));
+                    customer.firstname = $("#apibundle_pscustomer_firstname").val();
+                    customer.lastname = $("#apibundle_pscustomer_lastname").val();
+                    customer.email = $("#apibundle_pscustomer_email").val();
+                    customer.password = $("#apibundle_pscustomer_password").val();
+                    goToListHives(idHiveGroup, hiveGroups[idHiveGroup].hives);
+                },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.responseText);
                     $("#result").html(xhr.responseText);
@@ -934,8 +946,8 @@ function goToHiveParameters() {
 	        hiveGroups[idHiveGroup].hives[idHive].note = $("#apibundle_pshive_note").val();
 	        hiveGroups[idHiveGroup].hives[idHive].latitude = $("#apibundle_pshive_latitude").val();
 	        hiveGroups[idHiveGroup].hives[idHive].longitude = $("#apibundle_pshive_longitude").val();
-	        hiveGroups[idHiveGroup].hives[idHive].hiveType = $("#apibundle_pshive_hiveType").val();
-	        hiveGroups[idHiveGroup].hives[idHive].beesType = $("#apibundle_pshive_beesType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].hive_type = $("#apibundle_pshive_hiveType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].bees_type = $("#apibundle_pshive_beesType").val();
 	        hiveGroups[idHiveGroup].hives[idHive].material = $("#apibundle_pshive_material").val();
 	        hiveGroups[idHiveGroup].hives[idHive].support = $("#apibundle_pshive_support").val();
 	        hiveGroups[idHiveGroup].hives[idHive].state = $("#apibundle_pshive_state").val();
@@ -960,12 +972,32 @@ function goToHiveParameters() {
                 },
                 //data: 'apibundle_pscustomer[firstname]=test2',
                 data: donnees,
-                success: function(data) {console.log(data); customer = data; $("#resultat").html(JSON.stringify(data));},
+                success: function(data) {
+                	console.log(data); 
+                	customer = data; 
+                	//$("#resultat").html(JSON.stringify(data));
+                },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.responseText);
                     $("#result").html(xhr.responseText);
                 }
             });
+            /* modification en local */
+	        hiveGroups[idHiveGroup].hives[idHive].name = $("#apibundle_pshive_name").val();
+	        hiveGroups[idHiveGroup].hives[idHive].note = $("#apibundle_pshive_note").val();
+	        hiveGroups[idHiveGroup].hives[idHive].latitude = $("#apibundle_pshive_latitude").val();
+	        hiveGroups[idHiveGroup].hives[idHive].longitude = $("#apibundle_pshive_longitude").val();
+	        hiveGroups[idHiveGroup].hives[idHive].hive_type = $("#apibundle_pshive_hiveType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].bees_type = $("#apibundle_pshive_beesType").val();
+	        hiveGroups[idHiveGroup].hives[idHive].material = $("#apibundle_pshive_material").val();
+	        hiveGroups[idHiveGroup].hives[idHive].support = $("#apibundle_pshive_support").val();
+	        hiveGroups[idHiveGroup].hives[idHive].state = $("#apibundle_pshive_state").val();
+	        hiveGroups[idHiveGroup].hives[idHive].harvest = $("#apibundle_pshive_harvest").val();
+	        hiveGroups[idHiveGroup].hives[idHive].note= $("#apibundle_pshive_note").val();
+	        hiveGroups[idHiveGroup].hives[idHive].notes = $("#apibundle_pshive_notes").val();
+	        console.log(hiveGroups[idHiveGroup].hives[idHive]);
+	        /* on retourne aux détails */
+	        goToDataHives(hiveGroups[idHiveGroup].hives[idHive].name, hiveGroups[idHiveGroup].hives[idHive].data);
             //alert("fin modif");
         });
     }

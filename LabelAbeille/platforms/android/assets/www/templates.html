@@ -50,7 +50,7 @@
 		<div id="menudetails">
 			<img style="opacity:0.3;filter:alpha(opacity = 0.3)" src="img/details/courbes.png" alt="Courbes" />
 			<img style="opacity:0.3;filter:alpha(opacity = 0.3)" src="img/details/historique.png" class="milieu" alt="Historique" />
-			<img id="parametresRuche" src="img/details/parametres.png" alt="Param&egrave;tres" />
+			<img style="opacity:0.3;filter:alpha(opacity = 0.3)" id="parametresRuche" src="img/details/parametres.png" alt="Param&egrave;tres" />
 		</div>
 		<div id="details">
 			<div class="sizing"></div>
@@ -930,18 +930,18 @@
                 <label for="apibundle_pshivegroup_name">Nom</label>
                     <input class="zone_texte" type="text" id="apibundle_pshivegroup_name" name="apibundle_pshivegroup[name]" maxlength="64" />
             </div>
-            <div>
+            <!--<div>
                 <label for="apibundle_pshivegroup_note">Note</label>
                     <textarea id="apibundle_pshivegroup_note" name="apibundle_pshivegroup[note]" maxlength="65535"></textarea>
-            </div>
+            </div>-->
             <div>
                 <label for="apibundle_pshivegroup_harvest" class="required">Récolte</label>
                     <input type="number" id="apibundle_pshivegroup_harvest" name="apibundle_pshivegroup[harvest]" required="required" />
             </div>
-            <div>
+            <!--<div>
                 <label for="apibundle_pshivegroup_notes">Notes</label>
                     <textarea id="apibundle_pshivegroup_notes" name="apibundle_pshivegroup[notes]" maxlength="65535"></textarea>
-            </div>
+            </div>-->
             <!--<div>
                 <label class="required">Date add</label>
                     <div id="apibundle_pshivegroup_dateAdd"><div id="apibundle_pshivegroup_dateAdd_date">
@@ -1262,16 +1262,17 @@
     <form action="" method="POST" id="form-params-hive" >
         <div id="apibundle_pshive">
             <!--<div>
-                <label for="apibundle_pshive_idClient" class="required">Id client</label>-->
+                <label for="apibundle_pshive_idClient" class="required">Id client</label>
                     <input type="hidden" id="apibundle_pshive_idClient" name="apibundle_pshive[idClient]"/>
-            <!--</div>-->
+            </div>-->
             <div>
                 <label for="apibundle_pshive_name">Nom</label>
                     <input class="zone_texte" type="text" value="{{ name }}" id="apibundle_pshive_name" name="apibundle_pshive[name]" maxlength="64" />
             </div>
-            <div>
+            <!--<div>
                 <label for="apibundle_pshive_note">Note</label>
-                    <textarea id="apibundle_pshive_note" name="apibundle_pshive[note]" maxlength="65535"></textarea></div>
+                    <textarea id="apibundle_pshive_note" name="apibundle_pshive[note]" maxlength="65535"></textarea>
+            </div>-->
             <div>
                 <label for="apibundle_pshive_latitude">Latitude</label>
                     <input class="zone_texte" type="text" id="apibundle_pshive_latitude" value="{{ latitude }}" name="apibundle_pshive[latitude]" />
@@ -1308,7 +1309,7 @@
                 <label for="apibundle_pshive_harvest" class="required">Récolte</label>
                     <input type="number" id="apibundle_pshive_harvest" value="{{ harvest }}" name="apibundle_pshive[harvest]" required="required" />
             </div>
-            <div>
+            <!--<div>
                 <label for="apibundle_pshive_notes">Notes</label>
                 	<textarea id="apibundle_pshive_notes" name="apibundle_pshive[notes]" maxlength="65535"></textarea></div>
             <!--<div>
