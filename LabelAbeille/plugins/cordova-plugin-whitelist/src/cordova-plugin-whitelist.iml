@@ -7,12 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="classes" level="project" />
-    <orderEntry type="library" name="mainactivity-cordovalib" level="project" />
-    <orderEntry type="library" name="classes5" level="project" />
+    <orderEntry type="library" name="classes1" level="project" />
     <orderEntry type="library" name="classes2" level="project" />
-    <orderEntry type="module" module-name="buildConfig" />
-    <orderEntry type="module" module-name="debug" />
+    <orderEntry type="library" name="classes" level="project" />
     <orderEntry type="module" module-name="CordovaLib" />
+    <orderEntry type="module" module-name="buildConfig" />
   </component>
 </module>

@@ -184,7 +184,7 @@ public class Notification extends CordovaPlugin {
                 });
 
                 changeTextDirection(dlg);
-            };
+            }
         };
         this.cordova.getActivity().runOnUiThread(runnable);
     }
@@ -262,7 +262,7 @@ public class Notification extends CordovaPlugin {
                 });
 
                 changeTextDirection(dlg);
-            };
+            }
         };
         this.cordova.getActivity().runOnUiThread(runnable);
     }
@@ -370,7 +370,7 @@ public class Notification extends CordovaPlugin {
                 });
 
                 changeTextDirection(dlg);
-            };
+            }
         };
         this.cordova.getActivity().runOnUiThread(runnable);
     }
@@ -497,9 +497,9 @@ public class Notification extends CordovaPlugin {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         dlg.create();
         AlertDialog dialog =  dlg.show();
-        if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        if (currentapiVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
             TextView messageview = (TextView)dialog.findViewById(android.R.id.message);
-            //messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);
+            messageview.setTextDirection(android.view.View.TEXT_DIRECTION_LOCALE);
         }
     }
 }

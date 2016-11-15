@@ -1,209 +1,484 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="stylesheet" href="css/opensans.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/accueil.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/parametres.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/form.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/details.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/chargement-connexion.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/opensans.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/accueil.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/parametres.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/form.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/details.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/chargement-connexion.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/historique.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="css/courbes.css" type="text/css" charset="utf-8" />
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/chargement.js"></script>
-       	<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/mustache.js"></script>
-        <script type="text/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript" src="js/donnees_ruches.js"></script>
+       <script type="text/javascript" src="js/carte.js"></script>
+       <script type="text/javascript" src="js/jquery.js"></script>
+       <script type="text/javascript" src="js/mustache.js"></script>
+       <script type="text/javascript" src="js/fastclick.js"></script>
+       <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript" src="js/hammer.min.js"></script>
+        <script type="text/javascript" src="js/dessin_cercle_chargement.js"></script>
+        <script type="text/javascript" src="js/valeurs_demo.js"></script>
+        <script type="text/javascript" src="js/connexion.js"></script>
+        <script type="text/javascript" src="js/navigation.js"></script>
+        <script type="text/javascript" src="js/liste_ruches.js"></script>
+        <script type="text/javascript" src="js/liste_ruchers.js"></script>
+        <script type="text/javascript" src="js/courbes.js"></script>
+        <script type="text/javascript" src="js/custom_notes.js"></script>
+        <script type="text/javascript" src="js/default_notes.js"></script>
+        <script type="text/javascript" src="js/boutons.js"></script>
+        <script type="text/javascript" src="js/creer_ruche.js"></script>
+        <script type="text/javascript" src="js/creer_rucher.js"></script>
+        <script type="text/javascript" src="js/parametres.js"></script>
+        <script type="text/javascript" src="js/connexion.js"></script>
+        <script type="text/javascript" src="js/inscription.js"></script>
+        <script type="text/javascript" src="js/accueil2.js"></script>
+        <script type="text/javascript" src="js/historique.js"></script>
+        <script type="text/javascript" src="js/Chart.bundle.js"></script>
+
         <title>Label Abeille</title>
     </head>
+
     <body>
-		
-		<div id="bd" style="visibility:hidden;">
-			<div id="boite">
-				<span id="messBd">Mauvais identifiant ou mot de passe</span>
-				<div id="btBd" class="bouton"><p></p><span id="btBd_txt">REESSAYER</span></div>
-			</div>
-		</div>
-		
-		<div class="page" id="pchargement">
-       		<div id="entete1">
-            	<img src="img/logo.png" alt="Label Abeille" />
-        	</div>
-			<div id="corps1">
-				<img src="img/alveoles.png" alt="Fond Alveoles" id="alveoles_chargement">
-				<canvas class="can" id="canvasProgressSimple"></canvas>
-				<div id="status"></div>
-			</div>
-		</div>	
-		
-		<div class="page" id="pconnexion" style="display:none;">
-       		<div id="entete1">
-            	<img src="img/logo.png" alt="Label Abeille" />
-        	</div>
-			<div id="corps1" class="fond_gris">
-				<div id="haut_connexion">
-					<div></div>
-				</div>
-				<div id="connexion">
-					<div id="connexion_contenu">
-						<h1>CONNEXION</h1>
-						<div class="sizing"></div>
-					
-						<form>
-							<input class="zone_texte" type="text" id="email_connexion" value="user@studio-kiwik.fr" onfocus="if(this.value=='Adresse e-mail'){this.value=''}" onblur="if(this.value==''){this.value = 'Adresse e-mail'}"/>
-							<input class="zone_texte" type="text" id="mdp_connexion" value="kiwik459" onfocus="if(this.value=='Mot de passe'){this.value='';this.type='password'}" onblur="if(this.value==''){this.value = 'Mot de passe'; this.type='text'}"/>
-							<div class="bouton" id="valider_connexion"><p></p><span>VALIDER</span></div>
-						</form>
-						<div style="clear:left;"></div>
-					</div>
-					<div id="liens1">
-						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Site Mobile" src="img/liens/sitem.png" />
-						<img onclick="window.open('http://www.label-abeille.org/faq', '_system');" alt="F.A.Q." src="img/liens/faq.png" />
-					</div>
-					<div id="liens2">
-						<img onclick="window.open('http://www.label-abeille.org', '_system');"  alt="Facebook" src="img/liens/fb.png" />
-						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Twitter" src="img/liens/twitter.png" />
-						<img onclick="window.open('http://www.label-abeille.org', '_system');" alt="Google plus" src="img/liens/google.png" />
-					</div>
-				</div>
-			</div>
-		</div>		
-		
-		<div class="page" id="paccueil" style="display:none;">
-			<div id="menu_haut">
-				<img src="img/carte.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Carte" />
-				<img src="img/historique.png" style="opacity:0.3;filter:alpha(opacity = 0.3)" alt="Historique" />
-				<img class="droite" id="btReglages" src="img/reglages.png" alt="Réglages" />
-			</div>
-			<div id="content-accueil" class="corps_accueil">
-					
-			</div>
-		</div>
-		
-		<div class="page" id="pparametres" style="display:none;">
-			<div id="menu_haut">
-				<a href="#"><img class="retour" src="img/retour.png" alt="Retour" /></a>
-				<h1>Param&egrave;tres</h1>
-			</div>
-			<div id="bas_defilement"></div>
-			<div id="bas_triangle"></div>
-			<div class="corps">
-				<div id="sous_titre">
-					<span id="nav_gauche"><</span>
-					<span id="nav_droite">></span>
-					<h1>Ruchers</h1>
-				</div>
-				<div id="contenu" class="formulaire">
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
-				
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<img src="img/on.png" id="check1" alt="ON" class="checkb"/>
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<div class="bouton"><p></p><span>CREER</span></div>
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
-				<h2>Supprimer</h2>
-				<select class="liste_deroulante" name="supprimer">
-					<option>S&eacute;lectionnez un rucher</option>
-					<option>Rucher 1</option>
-					<option>Rucher 2</option>
-				</select>
-				<h2>Cr&eacute;er</h2>
-				<input class="zone_texte" type="text" name="creer" value="Entrez un nom" />
+    <div id="app">
+        <!-- container : where our pages will be included -->
+		<div id="container">
+			<div class="page center" id="pchargement">
+	       		<div id="entete1">
+	            	<img src="img/logo.png" alt="Label Abeille" />
+	        	</div>
+				<div id="corps1">
+					<img src="img/alveoles.png" alt="Fond Alveoles" id="alveoles_chargement">
+					<canvas class="can" id="canvasProgressSimple"></canvas>
+					<div id="status"></div>
 				</div>
 			</div>
 		</div>
-		<div class="page" id="pdetails" style="display:none;">
-			<div id="menu_haut">
-				<a href="#"><img class="retour" src="img/retour.png" alt="Retour" /></a>
-				<h1></h1>
-			</div>
-			<div id="bas_defilement"></div>
-			<div id="bas_triangle"><img style="opacity:0.3;filter:alpha(opacity = 0.3)"  src="img/ajouter_note.png" alt="Ajouter une note" /></div>
-			<div class="corps">
-				<div id="sous_titre">
-					<span id="nav_gauche"></span>
-					<span id="nav_droite"></span>
-					<h1>Nom de la ruche <span>[2.1]</span></h1>
-				</div>
-				<div id="details-content">
-					
-				</div>
-			</div>
-		</div>
-			
+		
+		<!-- loading screen -->
+        <div id="ch" style="visibility:hidden;">
+            <div class="cssload-container">
+                <div class="cssload-whirlpool"></div>
+            </div>
+        </div>
         
+        <!-- dialog pop-up -->
+        <div id="bd" style="visibility:hidden;">
+            <div id="boite">
+                <span id="messBd">Mauvais identifiant ou mot de passe</span>
+                <div id="btBd" class="bouton"><span id="btBd_txt">REESSAYER</span></div>
+            </div>
+        </div>
+        
+        <!-- pages to include in container -->
+        <div id="pages" style="display:none;">
+            <!-- connection page/welcome page -->
+            <div class="page" id="pconnexion">
+                <div id="entete1">
+                    <img src="img/logo.png" alt="Label Abeille" />
+                </div>
+                <div id="corps1" class="fond_gris">
+                    <div id="haut_connexion">
+                        <div></div>
+                    </div>
+                    <div id="connexion">
+                        <div id="connexion_contenu">
+                            <h1>CONNEXION</h1>
+                            <div class="sizing"></div>
+                            <form>
+                                <input class="zone_texte"  type="text" value="Adresse e-mail" id="email_connexion" onfocus="if(this.value=='Adresse e-mail'){this.value=''}" onblur="if(this.value==''){this.value = 'Adresse e-mail'}"/>
+                                <input class="zone_texte"  type="text" value="Mot de passe" id="mdp_connexion" onfocus="if(this.value=='Mot de passe'){this.value='';this.type='password'}" onblur="if(this.value==''){this.value = 'Mot de passe'; this.type='text'}"/>
+                                <div class="bouton" id="valider_connexion" style="display:inline-block;"><span>CONNEXION</span></div>
+                                <div class="bouton" id="commencer_inscription" style="display:inline-block;"><span>CR&Eacute;ER UN COMPTE</span></div>
+                                <!-- <div class="bouton" id="test" style="display:inline-block;"><span>TESTER</span></div> -->
+                            </form>
+                            <div style="clear:left;"></div>
+                        </div>
+                        <div id="liens1">
+                            <img id="sitemobile" alt="Site Mobile" src="img/liens/sitem.png" />
+                            <img id="faq" alt="F.A.Q." src="img/liens/faq.png" />
+                        </div>
+                        <div id="liens2">
+                            <img id="fb" alt="Facebook" src="img/liens/fb.png" />
+                            <img id="twitter" alt="Twitter" src="img/liens/twitter.png" />
+                            <img id="gplus" alt="Google plus" src="img/liens/google.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- registration page -->
+            <div class="page" id="pinscription">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_generaux" alt="Retour" />
+                    <h1>Inscription</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div class="corps">
+                    <div id="inscription">
+                        <div id="inscription_contenu" class="contenu formulaire">
+                            <form class="formulaire" id="form-inscription">
+                                <div>
+                                    <label for="apibundle_pscustomer_firstname" class="required">Prénom<span style="color: red">*</span></label>
+                                        <input type="text" id="apibundle_pscustomer_firstname" name="apibundle_pscustomer[firstname]" placeholder="Prénom" maxlength="32" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomer_lastname" class="required">Nom<span style="color: red">*</span></label>
+                                        <input type="text" id="apibundle_pscustomer_lastname" name="apibundle_pscustomer[lastname]" placeholder="Nom" maxlength="32" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomer_email" class="required">Email<span style="color: red">*</span></label>
+                                        <input type="email" id="apibundle_pscustomer_email" name="apibundle_pscustomer[email]" placeholder="Adresse mail" maxlength="128" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomer_telephone" class="required">Téléphone<span style="color: red">*</span></label>
+                                        <input type="tel" id="apibundle_pscustomer_telephone" name="apibundle_pscustomer[telephone]" placeholder="Numéro de téléphone" maxlength="128" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomer_password" class="required">Mot de passe<span style="color: red">*</span></label>
+                                        <input type="password" id="apibundle_pscustomer_password" name="apibundle_pscustomer[password]" maxlength="32" />
+                                </div>
+                                <div class="bouton"><span>S'INSCRIRE</span></div>
+                            </form>
+                            <div style="clear:left;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- graphs -->
+            <div class="page" id="pcourbes">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_generaux" alt="Retour" />
+                    <h1></h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="content-courbes" class="corps">
+                    
+                    
+                </div>
+            </div>
+            
+            <!-- list of the hives -->
+            <div class="page" id="paccueil">
+                <div id="menu_haut">
+                    <img src="img/carte.png" id="btCarte" alt="Carte" />
+                    <!-- <img src="img/historique.png" id="btHistorique" alt="Historique" /> -->
+                    <img class="droite" id="btReglages" src="img/reglages.png" alt="Réglages" />
+                </div>
+                
+                <div id="content-accueil" class="corps_accueil">
+                    
+                </div>
+            </div>
+
+
+            <!-- create a hive -->
+            <div class="page" id="pcreate-hive">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_create_hive" alt="Retour" />
+                    <h1>Créer une ruche</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="corps-create-hive" class="corps">
+                    <div class="sous_titre" id="sous_titre_create_hive">
+                        <h1></h1>
+                    </div>
+                    <div>
+                        <div id="create_hive_contenu" class="contenu">
+                            <div class="sizing"></div>
+                            <form class="formulaire" id="form-create-hive">
+                                <span style="color: red">*</span>Champ obligatoire<div style="width:10px;height:10px;"></div>
+                                <div>
+                                    <label for="apibundle_pshive_name">Nom<span style="color: red">*</span></label>
+                                    <input type="text" id="apibundle_pshive_name" name="apibundle_pshive[name]" maxlength="64" />
+                                    <div class="cl"></div>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_latitude">Latitude</label>
+                                        <input type="text" id="apibundle_pshive_latitude" name="apibundle_pshive[latitude]" />
+                                        <div class="cl"></div>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_longitude">Longitude</label>
+                                        <input type="text" id="apibundle_pshive_longitude" name="apibundle_pshive[longitude]" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_beesType">Espèce d'abeilles</label>
+                                    <select id="apibundle_pshive_beesType" name="apibundle_pshive[beesType]">
+                                        <option value="buckfast" >Buckfast</option>
+                                        <option value="hybrid" >Hybride</option>
+                                        <option value="black" >Abeille noire</option>
+                                        <option value="other" >Autre</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_hiveType">Type de ruche</label>
+                                    <select id="apibundle_pshive_hiveType" name="apibundle_pshive[hiveType]">
+                                        <option value="dadant" >Dadant</option>
+                                        <option value="langstroth" >Langstroth</option>
+                                        <option value="warre" >Warré</option>
+                                        <option value="other" >Autre</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_material">Type de matériau</label>
+                                    <select id="apibundle_pshive_material" name="apibundle_pshive[material]">
+                                        <option value="wood" >Bois</option>
+                                        <option value="plastic" >Plastique</option>
+                                        <option value="both" >Les deux</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_support">Type de support</label>
+                                    <select id="apibundle_pshive_support" name="apibundle_pshive[support]">
+                                        <option value="steel_frame" >Chassis acier</option>
+                                        <option value="cinderblock" >Parpaing</option>
+                                        <option value="beam" >Poutre</option>
+                                        <option value="other" >Autre</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_state">Etat</label>
+                                    <select id="apibundle_pshive_state" name="apibundle_pshive[state]">
+                                        <option value="bad" >Mauvais</option>
+                                        <option value="average" >Moyen</option>
+                                        <option value="good" >Bon</option>
+                                    </select>
+                                </div>
+                                <div style="display:none;">
+                                    <label for="apibundle_pshive_harvest" class="required">Récolte (kg)<span style="color: red">*</span></label>
+                                        <input type="number" id="apibundle_pshive_harvest" name="apibundle_pshive[harvest]" required="required" value="0" min="0" max="100" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pshive_date_installation">Date d'installation</label>
+                                    	<input type="text" id="apibundle_pshive_date_installation" name="apibundle_pshive[dateInstall]" min="1990" max="2025" step=1 />
+                                </div>
+                                <div style="display: inline-block;">
+                                    <div class="bouton" id="creer_ruche" style="display: inline-block; vertical-align : top;"><span>CREER</span></div>
+                                </div>
+                            </form>
+                            <div style="clear:left;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- add a logger to a hive -->
+            <div class="page" id="padd-logger">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_create_hive" alt="Retour" />
+                    <h1>Lier un boîtier</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="corps-add-logger" class="corps">
+                    <div class="sous_titre" id="sous_titre_addlogger">
+                        <h1></h1>
+                    </div>
+                    <div id="add_logger_contenu" class="contenu formulaire">
+                        <span style="color: red">*</span>Champ obligatoire<div style="width:10px;height:10px;"></div>
+                        <div class="sizing"></div>
+                        <form class="formulaire" id="form-add-logger">
+                            <div>
+                                <label for="apibundle_psbox_serialNumber" class="required">Numéro du boîtier<span style="color: red">*</span></label>
+                                <input type="text"   id="apibundle_psbox_serialNumber" name="apibundle_psbox[serialNumber]" required="required" maxlength="32" />
+                            </div>
+                            <div class="bouton"><span>ENREGISTRER</span></div>
+                        </form>
+                        <div style="clear:left;"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <!-- add hives to a hiveGroup -->
+            <div class="page" id="padd-hives-to-hivegroup">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_add_hives_to_hivegroup" alt="Retour" />
+                    <h1>Ajouter des ruches à ce rucher</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="corps-add-hives-to-hivegroup" class="corps">
+                </div>
+            </div>
+
+            <!-- account parameters -->
+            <div class="page" id="pparametres">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_generaux" alt="Retour" />
+                    <h1>Param&egrave;tres</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div class="corps">
+                    <div class="sous_titre">
+                            <h1>Compte</h1>
+                            </div>
+                    <div class="contenu formulaire" id="corps-params-generaux">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- hiveGroup parameters -->
+            <div class="page" id="pparametres-rucher">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_rucher" alt="Retour" />
+                    <h1>Param&egrave;tres</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div class="corps">
+                    <div class="sous_titre">
+                        <h1>Modifier un rucher</h1>
+                    </div>
+                    <div class="contenu formulaire" id="corps-params-rucher">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- hive parameters -->
+            <div class="page" id="pparametres-ruche">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_ruche" alt="Retour" />
+                    <h1>Param&egrave;tres</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div class="corps">
+                    <div class="sous_titre" id="sous_titre_pruche">
+                            <h1></h1>
+                    </div>
+                    <div class="contenu" id="corps-params-ruche">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- floor and ceiling parameters for the notifications -->
+            <div class="page" id="pparametres-ruche-seuils">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_ruche_seuil" alt="Retour" />
+                    <h1>Param&egrave;tres</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div class="corps">
+                    <div class="sous_titre">
+                        <h1></h1>
+                    </div>
+                    <div class="contenu formulaire" id="corps-params-ruche-seuils"></div>
+                </div>
+            </div>
+
+            <!-- details of one hive -->
+            <div class="page" id="pdetails">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_details" alt="Retour" />
+                    <h1>Détails de la ruche</h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"><img id="ajouter_note_details" src="img/ajouter_note.png" alt="Ajouter une note" /></div>
+                <div id="corps" class="corps">
+                    
+                </div>
+            </div>
+
+            <!-- history of the notes -->
+            <div class="page" id="phistorique">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_generaux" alt="Retour" />
+                    <h1><img src="img/picto_historique.png" /><span>Historique</span></h1>
+                    
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"><img id="ajouter_note_historique" src="img/ajouter_note.png" alt="Ajouter une note" /></div>
+                <div class="corps">
+                    <div class="sous_titre" id="sous_titre_histo">
+                    	  <!-- <input type="text" id="filtre_historique" placeholder="Rechercher..." /> -->
+                          <h1></h1>
+                    </div>
+                    <div id="content-historique">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- add a note to a hive -->
+            <div class="page" id="pajoutnote">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_details" alt="Retour" />
+                    <h1><img src="img/picto_historique.png" /><span>Historique</span></h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="content-ajout-note" class="corps"></div>
+                
+            </div>
+            
+            <!-- define a new custom note -->
+            <div class="page" id="pajoutnotepersonnalisee">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" id="retour_params_details" alt="Retour" />
+                    <h1><img src="img/picto_historique.png" /><span>Historique</span></h1>
+                </div>
+                <div id="bas_defilement"></div>
+                <div id="bas_triangle"></div>
+                <div id="content-ajout-note-personnalisee" class="corps">
+                    <div class="sous_titre" id="sous_titre_histo">
+                        <!-- <input type="text" id="filtre_historique" placeholder="Rechercher..." /> -->
+                        <h1>Création d'une note personnalisée</h1>
+                    </div>
+                    <div class="contenu">
+                        <div id="apibundle_pscustomnote">
+                            <div class="sizing"></div>
+                            <form class="formulaire" id="form-add-custom-note">
+                                <div>
+                                    <label for="apibundle_pscustomnote_name" class="required">Nom</label>
+                                    <input type="text" id="apibundle_pscustomnote_name" name="apibundle_pscustomnote[name]" required="required" maxlength="20" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomnote_message" class="required">Message</label>
+                                    <input type="text" id="apibundle_pscustomnote_message" name="apibundle_pscustomnote[message]" required="required" maxlength="100" />
+                                </div>
+                                <div>
+                                    <label for="apibundle_pscustomnote_level" class="required">Niveau d'alerte</label>
+                                    <select id="apibundle_pscustomnote_level" name="apibundle_pscustomnote[level]" required="required">
+                                        <option value="0" selected="selected">Information</option>
+                                        <option value="1">À faire</option>
+                                        <option value="2">Alerte</option>
+                                        <option value="3">Important</option>
+                                        <option value="4">Critique</option>
+                                    </select>
+                                </div>
+                                <div class="bouton" id="add_new_custom_note"><span>ENREGISTRER</span></div>
+
+                            </form>
+                            <div style="clear:left;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- map -->
+            <div class="page" id="pmap">
+                <div id="menu_haut">
+                    <img class="retour" src="img/retour.png" alt="Retour" id="retour_params_carte" />
+                    <h1>Carte</h1>
+                </div>
+                <div id="corps_carte" style="height:90%; width: 100%;"  class="corps_accueil">
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
 </html>
